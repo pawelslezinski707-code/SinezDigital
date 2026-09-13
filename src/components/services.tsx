@@ -13,7 +13,7 @@ export function Services() {
         <SectionHeading
           eyebrow="Usługi"
           title="Wszystko, czego potrzebujesz, by zaistnieć online"
-          description="Od prostej wizytówki po rozbudowany sklep internetowy – dopasowujemy rozwiązanie do Twoich celów i budżetu."
+          description="Od prostej wizytówki po rozbudowaną stronę firmową – dopasowujemy rozwiązanie do Twoich celów i budżetu."
         />
 
         <motion.div

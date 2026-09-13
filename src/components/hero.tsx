@@ -5,12 +5,6 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
-const stats = [
-  { value: "80+", label: "zrealizowanych projektów" },
-  { value: "98%", label: "zadowolonych klientów" },
-  { value: "6 lat", label: "doświadczenia na rynku" },
-];
-
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32">
@@ -61,8 +55,8 @@ export function Hero() {
             className="mt-6 max-w-2xl text-lg leading-relaxed text-muted"
           >
             Sinez Digital projektuje nowoczesne strony internetowe i portfolio dla
-            firm oraz osób prywatnych. Łączymy przemyślany design, wydajny kod i
-            skuteczne SEO, aby Twoja strona realnie pracowała na wyniki.
+            firm oraz osób prywatnych. Łączymy przemyślany design z wydajnym
+            kodem, aby Twoja strona realnie pracowała na wyniki.
           </motion.p>
 
           <motion.div
@@ -83,23 +77,6 @@ export function Hero() {
               Skontaktuj się
             </a>
           </motion.div>
-
-          <motion.dl
-            variants={fadeInUp}
-            className="mt-16 grid w-full grid-cols-3 gap-4 border-t border-surface-border pt-10"
-          >
-            {stats.map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center">
-                <dt className="sr-only">{stat.label}</dt>
-                <dd className="text-2xl font-bold text-foreground sm:text-3xl">
-                  {stat.value}
-                </dd>
-                <span className="mt-1 text-center text-xs text-muted sm:text-sm">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </motion.dl>
         </motion.div>
       </Container>
     </section>

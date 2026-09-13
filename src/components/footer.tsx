@@ -1,5 +1,6 @@
 import { navLinks, socialLinks, contactInfo } from "@/lib/data";
 import { Container } from "@/components/ui/container";
+import { Logo } from "@/components/logo";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -13,9 +14,7 @@ export function Footer() {
               href="#"
               className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 via-purple-500 to-blue-500 text-sm font-bold text-white">
-                S
-              </span>
+              <Logo className="h-8 w-8" />
               Sinez <span className="text-gradient">Digital</span>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
@@ -50,16 +49,21 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-foreground">Social media</h3>
             <div className="mt-4 flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-xs font-semibold text-muted transition-colors hover:border-violet-500/40 hover:text-violet-600 dark:hover:text-violet-400"
-                >
-                  {social.label[0]}
-                </a>
-              ))}
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-muted transition-colors hover:border-violet-500/40 hover:text-violet-600 dark:hover:text-violet-400"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

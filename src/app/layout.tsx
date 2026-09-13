@@ -25,14 +25,13 @@ export const metadata: Metadata = {
     template: "%s | Sinez Digital",
   },
   description:
-    "Sinez Digital to agencja projektowania nowoczesnych stron internetowych i portfolio dla firm oraz osób prywatnych. Strony wizytówki, sklepy internetowe i SEO.",
+    "Sinez Digital to agencja projektowania nowoczesnych stron internetowych i portfolio dla firm oraz osób prywatnych. Strony firmowe i wizytówki.",
   keywords: [
     "projektowanie stron internetowych",
     "tworzenie stron www",
     "agencja interaktywna",
     "portfolio online",
-    "sklepy internetowe",
-    "SEO",
+    "strony wizytówki",
   ],
   authors: [{ name: "Sinez Digital" }],
   openGraph: {
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Sinez Digital",
     title: "Sinez Digital – Tworzymy strony, które sprzedają",
     description:
-      "Nowoczesne strony internetowe i portfolio dla firm oraz osób prywatnych. Design, kod i SEO w jednym miejscu.",
+      "Nowoczesne strony internetowe i portfolio dla firm oraz osób prywatnych. Design i kod w jednym miejscu.",
   },
   twitter: {
     card: "summary_large_image",

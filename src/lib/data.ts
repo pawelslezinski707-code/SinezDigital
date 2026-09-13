@@ -9,6 +9,7 @@ import {
   Code2,
   Rocket,
 } from "lucide-react";
+import { InstagramIcon, TikTokIcon } from "@/components/social-icons";
 
 export const navLinks = [
   { href: "#o-nas", label: "O nas" },
@@ -58,51 +59,34 @@ export type Project = {
   name: string;
   category: ProjectCategory;
   categoryLabel: string;
-  gradient: string;
+  image: string;
+  demo: boolean;
 };
 
 export const projects: Project[] = [
   {
-    id: "nova-consulting",
-    name: "Nova Consulting",
+    id: "studio-yogi-lotus",
+    name: "Studio Yogi Lotus",
     category: "firmy",
-    categoryLabel: "Strona firmowa",
-    gradient: "from-indigo-500 via-purple-500 to-blue-500",
+    categoryLabel: "Studio jogi",
+    image: "/portfolio/lotus-yoga.jpg",
+    demo: true,
   },
   {
-    id: "marta-fotografia",
-    name: "Marta Kowalska – Fotografia",
-    category: "prywatne",
-    categoryLabel: "Portfolio prywatne",
-    gradient: "from-fuchsia-500 via-purple-500 to-indigo-500",
-  },
-  {
-    id: "urbanfit",
-    name: "UrbanFit Studio",
+    id: "trattoria-bella-vita",
+    name: "Trattoria Bella Vita",
     category: "firmy",
-    categoryLabel: "Strona firmowa",
-    gradient: "from-blue-500 via-cyan-500 to-teal-400",
+    categoryLabel: "Restauracja",
+    image: "/portfolio/bella-vita.jpg",
+    demo: true,
   },
   {
-    id: "adam-grafik",
-    name: "Adam Nowak – Grafik",
-    category: "prywatne",
-    categoryLabel: "Portfolio prywatne",
-    gradient: "from-violet-500 via-indigo-500 to-blue-600",
-  },
-  {
-    id: "greenpack",
-    name: "GreenPack",
+    id: "remontpro",
+    name: "RemontPro",
     category: "firmy",
-    categoryLabel: "E-commerce",
-    gradient: "from-purple-600 via-violet-500 to-fuchsia-500",
-  },
-  {
-    id: "kasia-ilustracje",
-    name: "Kasia Wiśniewska – Ilustracje",
-    category: "prywatne",
-    categoryLabel: "Portfolio prywatne",
-    gradient: "from-sky-500 via-blue-500 to-indigo-600",
+    categoryLabel: "Firma remontowa",
+    image: "/portfolio/remontpro.jpg",
+    demo: true,
   },
 ];
 
@@ -162,7 +146,6 @@ export const pricingPlans: PricingPlan[] = [
     features: [
       "Strona jednostronicowa (one-page)",
       "Responsywny design mobile-first",
-      "Podstawowa optymalizacja SEO",
       "Formularz kontaktowy",
       "1 runda poprawek",
       "Wdrożenie na hosting",
@@ -176,7 +159,6 @@ export const pricingPlans: PricingPlan[] = [
     features: [
       "Do 6 podstron",
       "Indywidualny projekt graficzny",
-      "Zaawansowane SEO on-page",
       "Panel do edycji treści (CMS)",
       "Integracja z Google Analytics",
       "3 rundy poprawek",
@@ -188,13 +170,12 @@ export const pricingPlans: PricingPlan[] = [
     name: "Premium",
     price: "7 500 zł",
     priceNote: "cena od, wycena indywidualna",
-    description: "Kompleksowe projekty – sklepy internetowe i rozbudowane platformy.",
+    description: "Kompleksowe, rozbudowane serwisy internetowe skrojone pod indywidualne potrzeby.",
     features: [
       "Nielimitowana liczba podstron",
-      "Sklep internetowy / funkcje e-commerce",
       "Indywidualne animacje i UX",
       "Zaawansowana optymalizacja wydajności",
-      "Integracje (płatności, CRM, newsletter)",
+      "Integracje (CRM, newsletter, rezerwacje)",
       "Opieka i rozwój przez 3 miesiące",
       "Dedykowany opiekun projektu",
     ],
@@ -202,8 +183,16 @@ export const pricingPlans: PricingPlan[] = [
 ];
 
 export const socialLinks = [
-  { label: "Facebook", href: "#" },
-  { label: "Instagram", href: "#" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/sinezdigital/",
+    icon: InstagramIcon,
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@sinezdigital",
+    icon: TikTokIcon,
+  },
 ];
 
 export const contactInfo = {

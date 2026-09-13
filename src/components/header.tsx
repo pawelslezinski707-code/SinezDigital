@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/data";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Container } from "@/components/ui/container";
+import { Logo } from "@/components/logo";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,9 +43,7 @@ export function Header() {
             href="#"
             className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 via-purple-500 to-blue-500 text-sm font-bold text-white">
-              S
-            </span>
+            <Logo className="h-8 w-8" />
             Sinez <span className="text-gradient">Digital</span>
           </a>
 
