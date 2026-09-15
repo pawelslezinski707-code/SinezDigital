@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CheckCircle2, ExternalLink } from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Container } from "@/components/ui/container";
+import { DemoFrame } from "@/components/demo-frame";
 import { projects } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -73,34 +74,7 @@ export default async function ProjectPage({ params }: PageProps) {
             {project.description}
           </p>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-surface-border bg-surface shadow-xl">
-            <div className="flex items-center gap-3 border-b border-surface-border bg-background px-4 py-3">
-              <div className="flex shrink-0 items-center gap-1.5">
-                <span className="h-3 w-3 rounded-full bg-red-400/70" />
-                <span className="h-3 w-3 rounded-full bg-amber-400/70" />
-                <span className="h-3 w-3 rounded-full bg-emerald-400/70" />
-              </div>
-              <div className="flex-1 truncate rounded-md bg-surface px-3 py-1 text-center text-xs text-muted">
-                {project.demoUrl}
-              </div>
-              <a
-                href={project.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Otwórz demo w nowej karcie"
-                className="flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-muted transition-colors hover:text-violet-600 dark:hover:text-violet-400"
-              >
-                <ExternalLink className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">Pełny ekran</span>
-              </a>
-            </div>
-            <iframe
-              src={project.demoUrl}
-              title={project.name}
-              className="h-[520px] w-full bg-white sm:h-[640px]"
-              loading="lazy"
-            />
-          </div>
+          <DemoFrame src={project.demoUrl} title={project.name} />
 
           <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
