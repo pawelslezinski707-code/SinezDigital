@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -94,13 +95,13 @@ export function Portfolio() {
                   <h3 className="text-base font-semibold text-foreground">
                     {project.name}
                   </h3>
-                  <button
-                    type="button"
+                  <Link
+                    href={`/portfolio/${project.id}`}
                     className="inline-flex items-center gap-1 text-sm font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400"
                   >
                     Zobacz więcej
                     <ArrowUpRight className="h-4 w-4" />
-                  </button>
+                  </Link>
                 </div>
               </motion.article>
             ))}

@@ -61,6 +61,8 @@ export type Project = {
   categoryLabel: string;
   image: string;
   demo: boolean;
+  description: string;
+  highlights: string[];
 };
 
 export const projects: Project[] = [
@@ -71,6 +73,14 @@ export const projects: Project[] = [
     categoryLabel: "Studio jogi",
     image: "/portfolio/lotus-yoga.jpg",
     demo: true,
+    description:
+      "Studio Yogi Lotus to fikcyjne, kameralne studio jogi, które prowadzi zajęcia Hatha, Vinyasa Flow oraz Yin Yoga, a także sesje oddechowe i medytacyjne dla osób w każdym wieku i na każdym poziomie zaawansowania.",
+    highlights: [
+      "Stonowana, naturalna kolorystyka budująca atmosferę spokoju",
+      "Czytelny harmonogram zajęć i szybkie zapisy online",
+      "Sekcja „O nas” budująca zaufanie i historię marki",
+      "W pełni responsywny układ dopasowany do telefonów i tabletów",
+    ],
   },
   {
     id: "trattoria-bella-vita",
@@ -79,6 +89,14 @@ export const projects: Project[] = [
     categoryLabel: "Restauracja",
     image: "/portfolio/bella-vita.jpg",
     demo: true,
+    description:
+      "Trattoria Bella Vita to fikcyjna włoska restauracja serwująca kuchnię śródziemnomorską. Strona ma zachęcać do rezerwacji stolika i budować klimat lokalu już od pierwszego wejrzenia.",
+    highlights: [
+      "Pełnoekranowe zdjęcie w tle budujące nastrój od razu na starcie",
+      "Wyraźne wezwania do działania: „Zobacz menu” i „Zarezerwuj stolik”",
+      "Elegancka typografia nawiązująca do włoskiego stylu",
+      "Przejrzysta nawigacja do menu, godzin otwarcia i kontaktu",
+    ],
   },
   {
     id: "remontpro",
@@ -87,6 +105,14 @@ export const projects: Project[] = [
     categoryLabel: "Firma remontowa",
     image: "/portfolio/remontpro.jpg",
     demo: true,
+    description:
+      "RemontPro to fikcyjna firma remontowo-budowlana oferująca kompleksowe remonty mieszkań i domów – od projektu po wykończenie, z naciskiem na solidność i terminowość.",
+    highlights: [
+      "Mocny, kontrastowy design budujący wrażenie solidności",
+      "Stale widoczny przycisk szybkiego kontaktu telefonicznego",
+      "Odznaki zaufania: gwarancja, terminowość, ubezpieczenie OC",
+      "Jasne wezwania do działania: bezpłatna wycena i oferta",
+    ],
   },
 ];
 
