@@ -60,6 +60,7 @@ export type Project = {
   category: ProjectCategory;
   categoryLabel: string;
   image: string;
+  demoUrl: string;
   demo: boolean;
   description: string;
   highlights: string[];
@@ -72,6 +73,7 @@ export const projects: Project[] = [
     category: "firmy",
     categoryLabel: "Studio jogi",
     image: "/portfolio/lotus-yoga.jpg",
+    demoUrl: "/demos/studio-yogi-lotus/index.html",
     demo: true,
     description:
       "Studio Yogi Lotus to fikcyjne, kameralne studio jogi, które prowadzi zajęcia Hatha, Vinyasa Flow oraz Yin Yoga, a także sesje oddechowe i medytacyjne dla osób w każdym wieku i na każdym poziomie zaawansowania.",
@@ -88,6 +90,7 @@ export const projects: Project[] = [
     category: "firmy",
     categoryLabel: "Restauracja",
     image: "/portfolio/bella-vita.jpg",
+    demoUrl: "/demos/trattoria-bella-vita/index.html",
     demo: true,
     description:
       "Trattoria Bella Vita to fikcyjna włoska restauracja serwująca kuchnię śródziemnomorską. Strona ma zachęcać do rezerwacji stolika i budować klimat lokalu już od pierwszego wejrzenia.",
@@ -104,6 +107,7 @@ export const projects: Project[] = [
     category: "firmy",
     categoryLabel: "Firma remontowa",
     image: "/portfolio/remontpro.jpg",
+    demoUrl: "/demos/remontpro/index.html",
     demo: true,
     description:
       "RemontPro to fikcyjna firma remontowo-budowlana oferująca kompleksowe remonty mieszkań i domów – od projektu po wykończenie, z naciskiem na solidność i terminowość.",

@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RemontPro – profesjonalne remonty w Warszawie i okolicach. Malowanie, płytki, elektryka, hydraulika, wykończenia wnętrz. Zadzwoń po bezpłatną wycenę.">
+  <title>RemontPro – Profesjonalne Remonty Warszawa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brick: #C0392B;
+      --brick-dark: #96281B;
+      --brick-light: #E74C3C;
+      --anthracite: #2C2C2C;
+      --anthracite-light: #3D3D3D;
+      --cream: #FAFAF7;
+      --cream-dark: #F0EFE9;
+      --text: #1A1A1A;
+      --text-muted: #5A5A5A;
+      --border: #D8D6CE;
+      --white: #FFFFFF;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 6px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+      --radius: 4px;
+      --font-head: 'Oswald', sans-serif;
+      --font-body: 'Source Serif 4', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* offset pod sticky nav (68px + 12px luzu) */
+    section[id], footer[id] {
+      scroll-margin-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--brick); border-radius: 3px; }
+
+    /* ─── FOCUS ─── */
+    :focus-visible {
+      outline: 3px solid var(--brick);
+      outline-offset: 3px;
+    }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brick);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--brick);
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--anthracite);
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: var(--brick);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--brick-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.7);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--anthracite);
+      border: 2px solid var(--anthracite);
+    }
+    .btn-outline-dark:hover { background: var(--anthracite); color: var(--white); }
+
+    /* ─── ANIMATION CLASSES ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ═══════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════ */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: var(--anthracite);
+      border-bottom: 3px solid var(--brick);
+      transition: box-shadow 0.3s;
+    }
+    #nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--brick);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-logo-text {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .nav-logo-text span { color: var(--brick); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 2px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+    .nav-cta {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white) !important;
+      background: var(--brick) !important;
+      padding: 8px 18px !important;
+      border-radius: var(--radius) !important;
+    }
+    .nav-cta:hover { background: var(--brick-dark) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--anthracite);
+        flex-direction: column;
+        padding: 16px 20px 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 3px solid var(--brick);
+        gap: 2px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 16px; font-size: 1rem; }
+    }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      background: var(--anthracite);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('hero.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+    }
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+    }
+    .hero-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: var(--brick);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 80px 20px 80px 60px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(192,57,43,0.2);
+      border: 1px solid rgba(192,57,43,0.5);
+      color: #F1948A;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--brick);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero-title .accent { color: var(--brick); }
+    .hero-subtitle {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin-bottom: 44px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 64px;
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+    }
+    .hero-trust-item svg { color: var(--brick); flex-shrink: 0; }
+
+    @media (max-width: 768px) {
+      .hero-content { padding: 60px 20px 60px 36px; }
+      .hero-accent { width: 4px; }
+    }
+
+    /* ═══════════════════════════════════════
+       STATS
+    ═══════════════════════════════════════ */
+    #stats {
+      background: var(--brick);
+      position: relative;
+      overflow: hidden;
+    }
+    #stats::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: rgba(0,0,0,0.08);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      padding: 48px 32px;
+      text-align: center;
+      position: relative;
+    }
+    .stat-item + .stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 30%;
+      height: 40%;
+      width: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-suffix {
+      font-size: 0.7em;
+      opacity: 0.8;
+    }
+    .stat-label {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(3)::before { display: none; }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) {
+        border-top: 1px solid rgba(255,255,255,0.15);
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════ */
+    #services {
+      padding: 100px 0;
+      background: var(--cream);
+    }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+      cursor: default;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--brick);
+      transition: width 0.4s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .service-card:hover::after { width: 100%; }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--cream-dark);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--brick);
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-icon {
+      background: rgba(192,57,43,0.1);
+    }
+    .service-name {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--anthracite);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .service-price {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--brick);
+      background: rgba(192,57,43,0.08);
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════════
+       GALLERY
+    ═══════════════════════════════════════ */
+    #gallery {
+      padding: 100px 0;
+      background: var(--anthracite);
+    }
+    .gallery-header { margin-bottom: 40px; }
+    .gallery-header .section-label { color: #F1948A; }
+    .gallery-header .section-label::before { background: #F1948A; }
+    .gallery-header .section-title { color: var(--white); }
+    .gallery-filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.6);
+      padding: 9px 20px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--brick);
+      border-color: var(--brick);
+      color: var(--white);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border-radius: var(--radius);
+      cursor: pointer;
+      background: var(--anthracite-light);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.08); }
+
+    /* Placeholder gdy brak zdjęcia */
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #232323;
+      padding: 20px;
+      text-align: center;
+      border: 2px dashed rgba(255,255,255,0.12);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .gallery-item:hover .gallery-placeholder {
+      border-color: rgba(192,57,43,0.5);
+      background: #282828;
+    }
+    .gallery-placeholder-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(192,57,43,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brick);
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+    .gallery-item:hover .gallery-placeholder-icon {
+      background: rgba(192,57,43,0.22);
+    }
+    .gallery-placeholder-cat {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brick);
+      margin-bottom: 2px;
+    }
+    .gallery-placeholder-title {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.3;
+    }
+    .gallery-placeholder-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.5;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .gallery-item.hidden { display: none; }
+
+    @media (max-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+    /* ─── LIGHTBOX ─── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #lightbox.open { display: flex; }
+    .lightbox-inner {
+      position: relative;
+      max-width: 1000px;
+      width: 100%;
+      animation: lb-in 0.25s ease;
+    }
+    @keyframes lb-in {
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    #lightbox-img {
+      width: 100%;
+      max-height: 80svh;
+      object-fit: contain;
+      border-radius: 2px;
+    }
+    .lb-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1.2rem;
+    }
+    .lb-btn:hover { background: var(--brick); border-color: var(--brick); }
+    #lb-prev { left: -64px; }
+    #lb-next { right: -64px; }
+    #lb-close {
+      position: absolute;
+      top: -52px;
+      right: 0;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    #lb-close:hover { color: var(--white); }
+    #lb-caption {
+      text-align: center;
+      margin-top: 14px;
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    @media (max-width: 768px) {
+      #lb-prev { left: -4px; top: auto; bottom: -56px; transform: none; }
+      #lb-next { right: -4px; top: auto; bottom: -56px; transform: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       TRUST / REVIEWS
+    ═══════════════════════════════════════ */
+    #trust {
+      padding: 100px 0;
+      background: var(--cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #trust::before {
+      content: '"';
+      position: absolute;
+      top: -60px;
+      left: -20px;
+      font-family: var(--font-head);
+      font-size: 40rem;
+      color: rgba(192,57,43,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .trust-header { margin-bottom: 56px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .review-card::before {
+      content: '"';
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-family: var(--font-head);
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(192,57,43,0.12);
+    }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 18px;
+    }
+    .star { color: #F0A500; font-size: 1rem; }
+    .review-text {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    .reviewer-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--cream-dark);
+      flex-shrink: 0;
+    }
+    .reviewer-name {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--anthracite);
+    }
+    .reviewer-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr; max-width: 600px; } }
+
+    /* ═══════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════ */
+    #contact {
+      padding: 100px 0;
+      background: var(--cream);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-form {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 44px 36px;
+    }
+    .form-title {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--anthracite);
+      margin-bottom: 32px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--anthracite);
+      margin-bottom: 7px;
+    }
+    .form-group label .required { color: var(--brick); margin-left: 2px; }
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--brick);
+      box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+    }
+    .form-control.error { border-color: #e74c3c; }
+    .form-control.success { border-color: #27ae60; }
+    select.form-control {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A5A5A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    .field-error {
+      display: none;
+      font-size: 0.78rem;
+      color: #e74c3c;
+      margin-top: 5px;
+    }
+    .field-error.show { display: block; }
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--brick);
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+    .checkbox-group label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+    .checkbox-group label a { color: var(--brick); }
+    .form-submit {
+      width: 100%;
+      justify-content: center;
+      font-size: 1rem;
+      padding: 16px;
+    }
+
+    /* Success message */
+    #form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      animation: fade-in 0.5s ease;
+    }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    #form-success.show { display: block; }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(39,174,96,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .success-title {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--anthracite);
+      margin-bottom: 10px;
+    }
+    .success-text { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* Contact info */
+    .contact-info { position: sticky; top: 88px; }
+    .info-block {
+      background: var(--anthracite);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+    .info-block-title {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+    .info-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+    .info-row:last-child { margin-bottom: 0; }
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(192,57,43,0.2);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brick);
+      flex-shrink: 0;
+    }
+    .info-label {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 2px;
+    }
+    .info-value {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .info-value a { color: inherit; text-decoration: none; }
+    .info-value a:hover { color: var(--white); }
+    .map-placeholder {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--text-muted);
+      overflow: hidden;
+    }
+    .map-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info { position: static; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 28px 20px; }
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: #1A1A1A;
+      padding: 64px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-brand {}
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 18px;
+    }
+    .footer-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 280px;
+    }
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+    .social-link {
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-link:hover {
+      background: var(--brick);
+      border-color: var(--brick);
+      color: var(--white);
+    }
+    .footer-col-title {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .footer-contact-item svg { color: var(--brick); flex-shrink: 0; }
+    .footer-contact-item a, .footer-contact-item span {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-contact-item a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.28);
+    }
+    .footer-legal {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-legal a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.28);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════════
+       FLOATING CALL BUTTON
+    ═══════════════════════════════════════ */
+    #call-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 800;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--brick);
+      color: var(--white);
+      text-decoration: none;
+      padding: 14px 22px 14px 18px;
+      border-radius: 50px;
+      box-shadow: 0 4px 20px rgba(192,57,43,0.45);
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: float-pulse 3s ease-in-out infinite;
+    }
+    @keyframes float-pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(192,57,43,0.45), 0 0 0 0 rgba(192,57,43,0.3); }
+      50% { box-shadow: 0 4px 20px rgba(192,57,43,0.45), 0 0 0 12px rgba(192,57,43,0); }
+    }
+    #call-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(192,57,43,0.55);
+      animation: none;
+    }
+    .call-btn-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .call-btn-text { line-height: 1.1; }
+    .call-btn-text small {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.75;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 600px) {
+      #call-btn { bottom: 24px; right: 20px; padding: 13px 18px 13px 13px; }
+      .call-btn-text .number { font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+<header id="nav" role="banner">
+  <div class="container">
+    <nav class="nav-inner" aria-label="Nawigacja główna">
+      <a href="#" class="nav-logo" aria-label="RemontPro – strona główna">
+        <div class="nav-logo-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 19L11 3L19 19H3Z" fill="white" fill-opacity="0.9"/>
+            <rect x="8" y="12" width="6" height="7" fill="#C0392B"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">Remont<span>Pro</span></span>
+      </a>
+      <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-menu" role="list">
+        <li><a href="#services">Oferta</a></li>
+        <li><a href="#gallery">Galeria</a></li>
+        <li><a href="#trust">Opinie</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+        <li><a href="#contact" class="nav-cta">Bezpłatna wycena</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section id="hero" aria-label="Baner główny">
+  <div class="hero-bg" role="presentation" aria-hidden="true"></div>
+  <div class="hero-texture" aria-hidden="true"></div>
+  <div class="hero-accent" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge" aria-label="Warszawa i okolice – aktywne zamówienia">
+        Warszawa i okolice — przyjmujemy zlecenia
+      </div>
+      <h1 class="hero-title">
+        Remonty<br>
+        <span class="accent">bez</span> kompromisów.
+      </h1>
+      <p class="hero-subtitle">Solidna robota. Termin. Cena.</p>
+      <p class="hero-desc">
+        Kompleksowe remonty mieszkań i domów w Warszawie i okolicach.
+        Od projektu po wykończenie – jeden wykonawca, pełna odpowiedzialność.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary" aria-label="Przejdź do sekcji oferta usług">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Sprawdź ofertę
+        </a>
+        <a href="#contact" class="btn btn-outline" aria-label="Przejdź do formularza kontaktowego">
+          Bezpłatna wycena
+        </a>
+      </div>
+      <div class="hero-trust" aria-label="Wyróżniki firmy">
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Gwarancja 5 lat
+        </div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Termin gwarantowany
+        </div>
+        <div class="hero-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Ubezpieczenie OC
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     STATS
+═══════════════════════════════════════ -->
+<section id="stats" aria-label="Statystyki firmy">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="200" data-suffix="+">0</div>
+        <div class="stat-label">Realizacji</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-number" data-target="15" data-suffix=" lat">0</div>
+        <div class="stat-label">Doświadczenia</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-number" data-target="98" data-suffix="%">0</div>
+        <div class="stat-label">Zadowolonych klientów</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-number" data-target="5" data-suffix=" lat">0</div>
+        <div class="stat-label">Gwarancja</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════ -->
+<section id="services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-label reveal">Czym się zajmujemy</div>
+        <h2 class="section-title reveal reveal-delay-1" id="services-title">Pełna oferta<br>usług remontowych</h2>
+      </div>
+      <a href="#contact" class="btn btn-outline-dark reveal reveal-delay-2" aria-label="Przejdź do formularza i zapytaj o wycenę">
+        Zapytaj o wycenę
+      </a>
+    </div>
+    <div class="services-grid" role="list">
+
+      <article class="service-card reveal" role="listitem" aria-label="Malowanie i tapetowanie">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13.5V19a2 2 0 002 2h16a2 2 0 002-2v-5.5"/><path d="M12 2C6.5 2 2 6.5 2 12"/><path d="M12 2c5.5 0 10 4.5 10 10"/><path d="M12 12v9"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
+        <h3 class="service-name">Malowanie & Tapetowanie</h3>
+        <p class="service-desc">Profesjonalne malowanie ścian i sufitów, tapetowanie, szpachlowanie i gruntowanie. Perfekcyjne wykończenie każdej powierzchni.</p>
+        <span class="service-price">od 25 zł/m²</span>
+      </article>
+
+      <article class="service-card reveal reveal-delay-1" role="listitem" aria-label="Układanie płytek">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3 class="service-name">Układanie Płytek</h3>
+        <p class="service-desc">Układanie płytek ceramicznych, gresowych i kamiennych. Łazienki, kuchnie, podłogi i tarasy. Fugowanie i uszczelnianie.</p>
+        <span class="service-price">od 80 zł/m²</span>
+      </article>
+
+      <article class="service-card reveal reveal-delay-2" role="listitem" aria-label="Instalacje elektryczne">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="service-name">Instalacje Elektryczne</h3>
+        <p class="service-desc">Wymiana i montaż instalacji elektrycznej, rozdzielnic, oświetlenia LED. Uprawnienia SEP. Pomiary i odbiory.</p>
+        <span class="service-price">od 60 zł/pkt</span>
+      </article>
+
+      <article class="service-card reveal reveal-delay-1" role="listitem" aria-label="Hydraulika">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 007-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 007 7z"/></svg>
+        </div>
+        <h3 class="service-name">Hydraulika</h3>
+        <p class="service-desc">Montaż i wymiana instalacji wodno-kanalizacyjnych, podłączenie armatury, kabiny prysznicowej, wanny. Usuwanie awarii.</p>
+        <span class="service-price">od 150 zł/godz</span>
+      </article>
+
+      <article class="service-card reveal reveal-delay-2" role="listitem" aria-label="Wykończenie wnętrz">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="service-name">Wykończenie Wnętrz</h3>
+        <p class="service-desc">Kompleksowe wykończenie „pod klucz": podłogi, sufity podwieszane, karton-gips, zabudowy meblowe, drzwi wewnętrzne.</p>
+        <span class="service-price">od 350 zł/m²</span>
+      </article>
+
+      <article class="service-card reveal reveal-delay-3" role="listitem" aria-label="Remonty kompleksowe">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+        </div>
+        <h3 class="service-name">Remonty Kompleksowe</h3>
+        <p class="service-desc">Remont całego mieszkania lub domu „od A do Z". Koordynacja wszystkich ekip, jeden kontakt, jeden termin, jedna gwarancja.</p>
+        <span class="service-price">od 1 200 zł/m²</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     GALLERY
+═══════════════════════════════════════ -->
+<section id="gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <div class="section-label">Nasze realizacje</div>
+      <h2 class="section-title" id="gallery-title">Efekty mówią<br>same za siebie</h2>
+    </div>
+    <div class="gallery-filters reveal reveal-delay-1" role="group" aria-label="Filtruj galerie">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">Wszystkie</button>
+      <button class="filter-btn" data-filter="lazienki" aria-pressed="false">Łazienki</button>
+      <button class="filter-btn" data-filter="kuchnie" aria-pressed="false">Kuchnie</button>
+      <button class="filter-btn" data-filter="salony" aria-pressed="false">Salony</button>
+    </div>
+    <div class="gallery-grid reveal reveal-delay-2" id="gallery-grid" role="list" aria-label="Galeria realizacji">
+
+      <div class="gallery-item" data-cat="lazienki" role="listitem" aria-label="Miejsce na zdjęcie łazienki 1">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Łazienki</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 1</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonej łazienki</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="kuchnie" role="listitem" aria-label="Miejsce na zdjęcie kuchni 1">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Kuchnie</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 2</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonej kuchni</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="salony" role="listitem" aria-label="Miejsce na zdjęcie salonu 1">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Salony</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 3</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonego salonu</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="lazienki" role="listitem" aria-label="Miejsce na zdjęcie łazienki 2">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Łazienki</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 4</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonej łazienki</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="kuchnie" role="listitem" aria-label="Miejsce na zdjęcie kuchni 2">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Kuchnie</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 5</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonej kuchni</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="salony" role="listitem" aria-label="Miejsce na zdjęcie salonu 2">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Salony</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 6</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonego salonu</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="lazienki" role="listitem" aria-label="Miejsce na zdjęcie łazienki 3">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Łazienki</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 7</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonej łazienki</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="kuchnie" role="listitem" aria-label="Miejsce na zdjęcie kuchni 3">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Kuchnie</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 8</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonej kuchni</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="salony" role="listitem" aria-label="Miejsce na zdjęcie salonu 3">
+        <div class="gallery-placeholder">
+          <div class="gallery-placeholder-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="gallery-placeholder-cat">Salony</div>
+          <div class="gallery-placeholder-title">Zdjęcie realizacji nr 9</div>
+          <div class="gallery-placeholder-sub">Dodaj własne zdjęcie<br>z ukończonego salonu</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia" aria-hidden="true">
+  <div class="lightbox-inner">
+    <button id="lb-close" aria-label="Zamknij podgląd">&times;</button>
+    <img id="lightbox-img" src="" alt="Powiększone zdjęcie realizacji">
+    <button class="lb-btn" id="lb-prev" aria-label="Poprzednie zdjęcie">&#8592;</button>
+    <button class="lb-btn" id="lb-next" aria-label="Następne zdjęcie">&#8594;</button>
+    <div id="lb-caption"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TRUST / REVIEWS
+═══════════════════════════════════════ -->
+<section id="trust" aria-labelledby="trust-title">
+  <div class="container">
+    <div class="trust-header reveal">
+      <div class="section-label">Opinie klientów</div>
+      <h2 class="section-title" id="trust-title">Co mówią<br>o nas klienci</h2>
+    </div>
+    <div class="reviews-grid">
+
+      <article class="review-card reveal" aria-label="Opinia Anny Kowalskiej">
+        <div class="stars" aria-label="Ocena: 5 na 5 gwiazdek">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">
+          „Robiłam gruntowny remont łazienki i kuchni. Ekipa przyszła punktualnie, pracowała schludnie
+          i bez zbędnych przestojów. Efekt przeszedł moje oczekiwania – wszystko dopięte na ostatni guzik.
+          Gorąco polecam każdemu, kto ceni sobie solidność."
+        </p>
+        <div class="reviewer">
+          <img src="https://i.pravatar.cc/100?img=47" alt="Avatar Anny Kowalskiej" class="reviewer-avatar" loading="lazy" width="44" height="44">
+          <div>
+            <div class="reviewer-name">Anna Kowalska</div>
+            <div class="reviewer-info">Remont łazienki + kuchni, Mokotów</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal reveal-delay-1" aria-label="Opinia Marka Wiśniewskiego">
+        <div class="stars" aria-label="Ocena: 5 na 5 gwiazdek">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">
+          „Kompleksowy remont 80m² mieszkania w 6 tygodni, zgodnie z terminem i budżetem.
+          Żadnych niespodzianek w rozliczeniu. Kontakt z kierownikiem budowy przez cały czas.
+          Wreszcie znalazłem fachowców, którym można zaufać."
+        </p>
+        <div class="reviewer">
+          <img src="https://i.pravatar.cc/100?img=12" alt="Avatar Marka Wiśniewskiego" class="reviewer-avatar" loading="lazy" width="44" height="44">
+          <div>
+            <div class="reviewer-name">Marek Wiśniewski</div>
+            <div class="reviewer-info">Remont kompleksowy 80m², Ursynów</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card reveal reveal-delay-2" aria-label="Opinia Katarzyny Nowak">
+        <div class="stars" aria-label="Ocena: 5 na 5 gwiazdek">
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+          <span class="star" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">
+          „Po złych doświadczeniach z innymi firmami trafiłam na RemontPro.
+          Różnica jest kolosalna – profesjonalizm na każdym etapie, czystość na budowie,
+          rzetelna wycena bez ukrytych kosztów. Już polecałam znajomym."
+        </p>
+        <div class="reviewer">
+          <img src="https://i.pravatar.cc/100?img=32" alt="Avatar Katarzyny Nowak" class="reviewer-avatar" loading="lazy" width="44" height="44">
+          <div>
+            <div class="reviewer-name">Katarzyna Nowak</div>
+            <div class="reviewer-info">Wykończenie pod klucz, Wilanów</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════ -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div style="margin-bottom:56px;" class="reveal">
+      <div class="section-label">Napisz do nas</div>
+      <h2 class="section-title" id="contact-title">Bezpłatna wycena<br>w 24 godziny</h2>
+    </div>
+    <div class="contact-grid">
+
+      <div class="contact-form reveal reveal-delay-1">
+        <form id="contact-form" novalidate aria-label="Formularz kontaktowy">
+          <h3 class="form-title">Wyślij zapytanie</h3>
+          <div id="form-success" role="alert" aria-live="polite">
+            <div class="success-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="success-title">Wiadomość wysłana!</div>
+            <p class="success-text">Dziękujemy za kontakt. Odezwiemy się w ciągu 24 godzin z bezpłatną wyceną.</p>
+          </div>
+          <div id="form-fields">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Imię i nazwisko <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" class="form-control"
+                  placeholder="Jan Kowalski" autocomplete="name"
+                  aria-required="true" aria-describedby="name-error">
+                <span class="field-error" id="name-error" role="alert">Podaj imię i nazwisko.</span>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon <span class="required" aria-hidden="true">*</span></label>
+                <input type="tel" id="phone" name="phone" class="form-control"
+                  placeholder="+48 123 456 789" autocomplete="tel"
+                  aria-required="true" aria-describedby="phone-error">
+                <span class="field-error" id="phone-error" role="alert">Podaj poprawny numer telefonu.</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Adres e-mail <span class="required" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" class="form-control"
+                placeholder="jan@example.pl" autocomplete="email"
+                aria-required="true" aria-describedby="email-error">
+              <span class="field-error" id="email-error" role="alert">Podaj poprawny adres e-mail.</span>
+            </div>
+            <div class="form-group">
+              <label for="service">Rodzaj remontu <span class="required" aria-hidden="true">*</span></label>
+              <select id="service" name="service" class="form-control"
+                aria-required="true" aria-describedby="service-error">
+                <option value="">— wybierz usługę —</option>
+                <option value="malowanie">Malowanie i tapetowanie</option>
+                <option value="plytki">Układanie płytek</option>
+                <option value="elektryka">Instalacje elektryczne</option>
+                <option value="hydraulika">Hydraulika</option>
+                <option value="wykonczenie">Wykończenie wnętrz</option>
+                <option value="kompleksowy">Remont kompleksowy</option>
+                <option value="inne">Inne</option>
+              </select>
+              <span class="field-error" id="service-error" role="alert">Wybierz rodzaj remontu.</span>
+            </div>
+            <div class="form-group">
+              <label for="message">Wiadomość</label>
+              <textarea id="message" name="message" class="form-control"
+                placeholder="Opisz zakres prac, powierzchnię, termin realizacji…"
+                aria-describedby="message-hint"></textarea>
+              <span id="message-hint" style="font-size:0.78rem;color:var(--text-muted);margin-top:5px;display:block;">
+                Im więcej szczegółów, tym dokładniejsza wycena.
+              </span>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="rodo" name="rodo"
+                aria-required="true" aria-describedby="rodo-error">
+              <label for="rodo">
+                Wyrażam zgodę na przetwarzanie moich danych osobowych przez RemontPro Sp. z o.o.
+                w celu udzielenia odpowiedzi na zapytanie ofertowe, zgodnie z
+                <a href="#" aria-label="Otwórz politykę prywatności">Polityką Prywatności</a>.
+                <span class="required" aria-hidden="true">*</span>
+              </label>
+            </div>
+            <span class="field-error" id="rodo-error" role="alert" style="margin-top:-12px;margin-bottom:16px;">
+              Wymagana zgoda na przetwarzanie danych.
+            </span>
+            <button type="submit" class="btn btn-primary form-submit" aria-label="Wyślij formularz kontaktowy">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Wyślij zapytanie
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-info reveal reveal-delay-2" aria-label="Dane kontaktowe firmy">
+        <div class="info-block">
+          <div class="info-block-title">Dane kontaktowe</div>
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.38 1.16 2 2 0 012.38 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.59 7.09a16 16 0 006.35 6.35l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.16v2.76z"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Telefon</div>
+              <div class="info-value">
+                <a href="tel:+48123456789" aria-label="Zadzwoń pod numer +48 123 456 789">+48 123 456 789</a>
+              </div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="info-label">E-mail</div>
+              <div class="info-value">
+                <a href="mailto:kontakt@remontpro.pl">kontakt@remontpro.pl</a>
+              </div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Adres</div>
+              <div class="info-value">ul. Budowlana 14<br>00-001 Warszawa</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-title">Godziny pracy</div>
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Pon – Pt</div>
+              <div class="info-value">7:00 – 18:00</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Sobota</div>
+              <div class="info-value">8:00 – 14:00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-placeholder" aria-label="Mapa lokalizacji firmy">
+          <img src="https://picsum.photos/seed/map1/400/200" alt="Mapa – okolice Warszawy" loading="lazy">
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo" aria-label="RemontPro – strona główna">
+          <div class="nav-logo-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 19L11 3L19 19H3Z" fill="white" fill-opacity="0.9"/><rect x="8" y="12" width="6" height="7" fill="#C0392B"/></svg>
+          </div>
+          <span class="nav-logo-text">Remont<span>Pro</span></span>
+        </a>
+        <p class="footer-desc">
+          Profesjonalne remonty w Warszawie i okolicach. Solidna ekipa, terminowe realizacje,
+          gwarancja na każdą pracę.
+        </p>
+        <nav aria-label="Media społecznościowe">
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook RemontPro">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram RemontPro">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube RemontPro">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1A1A1A"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn RemontPro">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      <nav aria-label="Usługi">
+        <div class="footer-col-title">Usługi</div>
+        <ul class="footer-links">
+          <li><a href="#services">Malowanie</a></li>
+          <li><a href="#services">Płytki ceramiczne</a></li>
+          <li><a href="#services">Instalacje elektryczne</a></li>
+          <li><a href="#services">Hydraulika</a></li>
+          <li><a href="#services">Wykończenie wnętrz</a></li>
+          <li><a href="#services">Remonty kompleksowe</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Firma">
+        <div class="footer-col-title">Firma</div>
+        <ul class="footer-links">
+          <li><a href="#">O nas</a></li>
+          <li><a href="#gallery">Realizacje</a></li>
+          <li><a href="#trust">Opinie</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Kariera</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <div class="footer-col-title">Kontakt</div>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81"/></svg>
+          <a href="tel:+48123456789">+48 123 456 789</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:kontakt@remontpro.pl">kontakt@remontpro.pl</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>ul. Budowlana 14<br>00-001 Warszawa</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 RemontPro. Wszelkie prawa zastrzeżone.</p>
+      <nav class="footer-legal" aria-label="Linki prawne">
+        <a href="#">Polityka prywatności</a>
+        <a href="#">Regulamin</a>
+        <a href="#">Cookies</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     FLOATING CALL BUTTON
+═══════════════════════════════════════ -->
+<a href="tel:+48123456789" id="call-btn" aria-label="Zadzwoń do RemontPro: +48 123 456 789">
+  <div class="call-btn-icon" aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.38 1.16 2 2 0 012.38 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.59 7.09a16 16 0 006.35 6.35l1.45-1.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.16v2.76z"/></svg>
+  </div>
+  <div class="call-btn-text">
+    <small>Zadzwoń teraz</small>
+    <span class="number">+48 123 456 789</span>
+  </div>
+</a>
+
+<script>
+  // ─── NAV: sticky shadow + hamburger ───
+  const nav = document.getElementById('nav');
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // ─── SMOOTH SCROLL dla wszystkich linków kotwicowych ───
+  function scrollToSection(hash) {
+    const target = document.querySelector(hash);
+    if (!target) return;
+    const navHeight = nav.getBoundingClientRect().height;
+    const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const hash = a.getAttribute('href');
+      if (!hash || hash === '#') return;
+      const target = document.querySelector(hash);
+      if (!target) return;
+      e.preventDefault();
+      // zamknij hamburger jeśli otwarty
+      navMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      scrollToSection(hash);
+    });
+  });
+
+  // ─── INTERSECTION OBSERVER: reveal + stats ───
+  const revealEls = document.querySelectorAll('.reveal');
+  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+  let statsAnimated = false;
+
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !statsAnimated) {
+        statsAnimated = true;
+        statNumbers.forEach(animateCounter);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsSection = document.getElementById('stats');
+  if (statsSection) statsObserver.observe(statsSection);
+
+  // ─── GALLERY: filter + lightbox ───
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCaption = document.getElementById('lb-caption');
+  const lbClose = document.getElementById('lb-close');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+
+  let currentIndex = 0;
+  let visibleItems = [];
+
+  function getVisibleItems() {
+    return Array.from(galleryItems).filter(i => !i.classList.contains('hidden'));
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      const filter = btn.dataset.filter;
+      galleryItems.forEach(item => {
+        item.classList.toggle('hidden', filter !== 'all' && item.dataset.cat !== filter);
+      });
+    });
+  });
+
+  function openLightbox(index) {
+    visibleItems = getVisibleItems();
+    currentIndex = index;
+    const item = visibleItems[currentIndex];
+    const img = item.querySelector('img');
+    const caption = item.querySelector('.gallery-overlay span');
+    lbImg.src = img.src.replace('/800/600', '/1200/900');
+    lbImg.alt = img.alt;
+    lbCaption.textContent = caption ? caption.textContent : '';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function showPrev() {
+    visibleItems = getVisibleItems();
+    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+    const item = visibleItems[currentIndex];
+    const img = item.querySelector('img');
+    const caption = item.querySelector('.gallery-overlay span');
+    lbImg.src = img.src.replace('/800/600', '/1200/900');
+    lbImg.alt = img.alt;
+    lbCaption.textContent = caption ? caption.textContent : '';
+  }
+
+  function showNext() {
+    visibleItems = getVisibleItems();
+    currentIndex = (currentIndex + 1) % visibleItems.length;
+    const item = visibleItems[currentIndex];
+    const img = item.querySelector('img');
+    const caption = item.querySelector('.gallery-overlay span');
+    lbImg.src = img.src.replace('/800/600', '/1200/900');
+    lbImg.alt = img.alt;
+    lbCaption.textContent = caption ? caption.textContent : '';
+  }
+
+  galleryItems.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      visibleItems = getVisibleItems();
+      const visIndex = visibleItems.indexOf(item);
+      if (visIndex !== -1) openLightbox(visIndex);
+    });
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', item.querySelector('img')?.alt || 'Otwórz zdjęcie');
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.click(); }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', showPrev);
+  lbNext.addEventListener('click', showNext);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  });
+
+  // ─── CONTACT FORM VALIDATION ───
+  const form = document.getElementById('contact-form');
+  const formFields = document.getElementById('form-fields');
+  const formSuccess = document.getElementById('form-success');
+
+  function validateEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+  function validatePhone(v) {
+    return /^[\d\s\+\-\(\)]{9,15}$/.test(v.trim());
+  }
+
+  function setFieldState(id, valid, errorId) {
+    const el = document.getElementById(id);
+    const err = document.getElementById(errorId);
+    el.classList.toggle('error', !valid);
+    el.classList.toggle('success', valid);
+    err.classList.toggle('show', !valid);
+    el.setAttribute('aria-invalid', String(!valid));
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let ok = true;
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+    const rodo = document.getElementById('rodo').checked;
+
+    if (name.length < 3) { setFieldState('name', false, 'name-error'); ok = false; }
+    else setFieldState('name', true, 'name-error');
+
+    if (!validatePhone(phone)) { setFieldState('phone', false, 'phone-error'); ok = false; }
+    else setFieldState('phone', true, 'phone-error');
+
+    if (!validateEmail(email)) { setFieldState('email', false, 'email-error'); ok = false; }
+    else setFieldState('email', true, 'email-error');
+
+    if (!service) { setFieldState('service', false, 'service-error'); ok = false; }
+    else setFieldState('service', true, 'service-error');
+
+    const rodoErr = document.getElementById('rodo-error');
+    if (!rodo) {
+      rodoErr.classList.add('show');
+      document.getElementById('rodo').setAttribute('aria-invalid', 'true');
+      ok = false;
+    } else {
+      rodoErr.classList.remove('show');
+      document.getElementById('rodo').setAttribute('aria-invalid', 'false');
+    }
+
+    if (!ok) {
+      form.querySelector('.error')?.focus();
+      return;
+    }
+
+    // Simulate send
+    formFields.style.display = 'none';
+    formSuccess.classList.add('show');
+    formSuccess.focus();
+  });
+
+  // Live validation on blur
+  ['name', 'phone', 'email', 'service'].forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener('blur', () => {
+      if (el.value.trim() === '' && !el.classList.contains('error')) return;
+      if (id === 'name') setFieldState('name', el.value.trim().length >= 3, 'name-error');
+      if (id === 'phone') setFieldState('phone', validatePhone(el.value), 'phone-error');
+      if (id === 'email') setFieldState('email', validateEmail(el.value), 'email-error');
+      if (id === 'service') setFieldState('service', !!el.value, 'service-error');
+    });
+  });
+</script>
+</body>
+</html>
