@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/data";
@@ -39,34 +40,34 @@ export function Header() {
           className="flex h-18 items-center justify-between py-4"
           aria-label="Nawigacja główna"
         >
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
           >
             <Logo className="h-8 w-8" />
             Sinez <span className="text-gradient">Digital</span>
-          </a>
+          </Link>
 
           <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                href={`/${link.href}`}
                 className="text-sm font-medium text-muted transition-colors hover:text-foreground"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="hidden items-center gap-3 lg:flex">
             <ThemeToggle />
-            <a
-              href="#kontakt"
+            <Link
+              href="/#kontakt"
               className="rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-600/20 transition-transform hover:scale-105"
             >
               Wyceń projekt
-            </a>
+            </Link>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
@@ -95,22 +96,22 @@ export function Header() {
           >
             <Container className="flex flex-col gap-1 py-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  href={`/${link.href}`}
                   onClick={() => setIsOpen(false)}
                   className="rounded-lg px-3 py-3 text-base font-medium text-foreground/90 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#kontakt"
+              <Link
+                href="/#kontakt"
                 onClick={() => setIsOpen(false)}
                 className="mt-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-5 py-3 text-center text-sm font-semibold text-white"
               >
                 Wyceń projekt
-              </a>
+              </Link>
             </Container>
           </motion.div>
         )}
