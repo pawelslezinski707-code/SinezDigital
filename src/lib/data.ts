@@ -4,6 +4,7 @@ import {
   Palette,
   FileText,
   LifeBuoy,
+  Search,
   ClipboardList,
   PenTool,
   Code2,
@@ -49,6 +50,12 @@ export const services: Service[] = [
     title: "Opieka i rozwój strony po wdrożeniu",
     description:
       "Stałe wsparcie techniczne, aktualizacje i rozwój funkcjonalności już po uruchomieniu projektu.",
+  },
+  {
+    icon: Search,
+    title: "SEO dla firm",
+    description:
+      "Optymalizacja strony pod wyszukiwarki, aby klienci łatwiej znajdowali Twoją firmę w Google – w pakietach Business i Business Pro, lub jako dodatkowy upgrade.",
   },
 ];
 
