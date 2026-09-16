@@ -160,57 +160,86 @@ export const processSteps: ProcessStep[] = [
 
 export type PricingPlan = {
   name: string;
+  tag?: string;
   price: string;
+  priceFrom?: boolean;
   priceNote: string;
   description: string;
+  timeline: string;
   features: string[];
+  notes?: string[];
   featured?: boolean;
 };
 
 export const pricingPlans: PricingPlan[] = [
   {
-    name: "Starter",
-    price: "1 500 zł",
-    priceNote: "cena od, projekt jednorazowy",
-    description: "Idealne rozwiązanie na start – prosta strona wizytówka lub one-page.",
+    name: "Portfolio",
+    price: "900 zł",
+    priceNote: "cena stała",
+    description: "Prosta strona z najważniejszymi informacjami i danymi kontaktowymi.",
+    timeline: "Realizacja: ok. 3–4 dni robocze",
     features: [
-      "Strona jednostronicowa (one-page)",
-      "Responsywny design mobile-first",
-      "Formularz kontaktowy",
-      "1 runda poprawek",
-      "Wdrożenie na hosting",
+      "Jedna strona z podstawowymi informacjami",
+      "Dane kontaktowe i linki do social media",
+      "Wersja mobilna",
+      "Podstawowa optymalizacja pod wyszukiwarki",
     ],
   },
   {
     name: "Business",
-    price: "3 900 zł",
-    priceNote: "cena od, projekt jednorazowy",
-    description: "Rozbudowana strona firmowa z pełną strukturą podstron i CMS-em.",
+    tag: "Najczęściej wybierany",
+    price: "1 300 zł",
+    priceNote: "cena stała",
+    description: "Pełna oferta, realizacje i kontakt zebrane w jednym miejscu.",
+    timeline: "Realizacja: ok. 5 dni roboczych",
     features: [
-      "Do 6 podstron",
-      "Indywidualny projekt graficzny",
-      "Panel do edycji treści (CMS)",
-      "Integracja z Google Analytics",
-      "3 rundy poprawek",
-      "30 dni wsparcia po wdrożeniu",
+      "Rozbudowane sekcje: oferta, o firmie, realizacje, opinie",
+      "Formularz kontaktowy",
+      "Wersja mobilna",
+      "SEO Basic w cenie pakietu",
     ],
     featured: true,
   },
   {
-    name: "Premium",
-    price: "7 500 zł",
-    priceNote: "cena od, wycena indywidualna",
-    description: "Kompleksowe, rozbudowane serwisy internetowe skrojone pod indywidualne potrzeby.",
+    name: "Business Pro",
+    price: "3 300 zł",
+    priceFrom: true,
+    priceNote: "cena od",
+    description: "Osobne podstrony na każdą część oferty — gdy masz więcej do pokazania.",
+    timeline: "Realizacja: ok. 10 dni roboczych",
     features: [
-      "Nielimitowana liczba podstron",
-      "Indywidualne animacje i UX",
-      "Zaawansowana optymalizacja wydajności",
-      "Integracje (CRM, newsletter, rezerwacje)",
-      "Opieka i rozwój przez 3 miesiące",
-      "Dedykowany opiekun projektu",
+      "Do 6 podstron w cenie bazowej",
+      "Panel do samodzielnej edycji treści",
+      "SEO Pro w cenie pakietu",
+      "Zawiera wszystko z pakietów Portfolio i Business",
     ],
+    notes: ["+200 zł za każdą kolejną podstronę"],
   },
 ];
+
+export const pricingNote =
+  "Podane kwoty to punkt wyjścia do rozmowy, nie ostateczna wycena — zależy ona od tego, czy dostarczasz gotowe treści i grafiki oraz jakich integracji potrzebujesz. Nie wiesz, który wariant pasuje? Napisz, wspólnie dobierzemy zakres.";
+
+export type MaintenancePlan = {
+  name: string;
+  price: string;
+};
+
+export const maintenancePlans: MaintenancePlan[] = [
+  { name: "Business", price: "79 zł / mies." },
+  { name: "Business Pro", price: "od 129 zł / mies." },
+];
+
+export const maintenanceNote =
+  "To przykładowe stawki — dopasuj je do zakresu prac, jaki chcesz obejmować abonamentem (np. liczba zmian w miesiącu, czas reakcji).";
+
+export const seoUpgrade = {
+  name: "Upgrade do SEO Pro",
+  priceNote: "jednorazowo",
+  price: "120 zł",
+  note:
+    "Upgrade do SEO Pro to jednorazowa usługa, którą można dokupić do pakietu Portfolio lub Business — w Business Pro jest już w cenie.",
+};
 
 export const socialLinks = [
   {
