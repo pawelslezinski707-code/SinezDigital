@@ -47,7 +47,7 @@ export function Process() {
                     <span className="group/tooltip relative inline-flex">
                       <button
                         type="button"
-                        className="flex h-4 w-4 items-center justify-center rounded-full text-xs font-bold text-violet-500 outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-violet-400"
+                        className="flex h-5 w-5 items-center justify-center rounded-full text-sm font-bold text-violet-500 outline-none transition-colors hover:text-violet-400 focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-violet-400 dark:hover:text-violet-300"
                         aria-describedby={`step-note-${step.number}`}
                       >
                         *
