@@ -160,12 +160,10 @@ export const processSteps: ProcessStep[] = [
 
 export type PricingPlan = {
   name: string;
-  tag?: string;
   price: string;
   priceFrom?: boolean;
   priceNote: string;
   description: string;
-  timeline: string;
   features: string[];
   notes?: string[];
   featured?: boolean;
@@ -177,7 +175,6 @@ export const pricingPlans: PricingPlan[] = [
     price: "900 zł",
     priceNote: "cena stała",
     description: "Prosta strona z najważniejszymi informacjami i danymi kontaktowymi.",
-    timeline: "Realizacja: ok. 3–4 dni robocze",
     features: [
       "Jedna strona z podstawowymi informacjami",
       "Dane kontaktowe i linki do social media",
@@ -187,11 +184,9 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     name: "Business",
-    tag: "Najczęściej wybierany",
     price: "1 300 zł",
     priceNote: "cena stała",
     description: "Pełna oferta, realizacje i kontakt zebrane w jednym miejscu.",
-    timeline: "Realizacja: ok. 5 dni roboczych",
     features: [
       "Rozbudowane sekcje: oferta, o firmie, realizacje, opinie",
       "Formularz kontaktowy",
@@ -206,7 +201,6 @@ export const pricingPlans: PricingPlan[] = [
     priceFrom: true,
     priceNote: "cena od",
     description: "Osobne podstrony na każdą część oferty — gdy masz więcej do pokazania.",
-    timeline: "Realizacja: ok. 10 dni roboczych",
     features: [
       "Do 6 podstron w cenie bazowej",
       "Panel do samodzielnej edycji treści",
@@ -216,9 +210,6 @@ export const pricingPlans: PricingPlan[] = [
     notes: ["+200 zł za każdą kolejną podstronę"],
   },
 ];
-
-export const pricingNote =
-  "Podane kwoty to punkt wyjścia do rozmowy, nie ostateczna wycena — zależy ona od tego, czy dostarczasz gotowe treści i grafiki oraz jakich integracji potrzebujesz. Nie wiesz, który wariant pasuje? Napisz, wspólnie dobierzemy zakres.";
 
 export type MaintenancePlan = {
   name: string;

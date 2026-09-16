@@ -1,12 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Star } from "lucide-react";
+import { Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   pricingPlans,
-  pricingNote,
   maintenancePlans,
   maintenanceNote,
   seoUpgrade,
@@ -40,13 +39,6 @@ export function Pricing() {
                   : "border-surface-border bg-background"
               }`}
             >
-              {plan.tag && (
-                <span className="absolute -top-4 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-violet-700 shadow-md">
-                  <Star className="h-3.5 w-3.5 fill-current" />
-                  {plan.tag}
-                </span>
-              )}
-
               <h3
                 className={`text-lg font-semibold ${
                   plan.featured ? "text-white" : "text-foreground"
@@ -87,13 +79,6 @@ export function Pricing() {
               >
                 {plan.priceNote}
               </p>
-              <p
-                className={`mt-3 text-xs font-medium ${
-                  plan.featured ? "text-violet-100" : "text-muted"
-                }`}
-              >
-                {plan.timeline}
-              </p>
 
               <ul className="mt-8 flex-1 space-y-3 border-t border-white/10 pt-6">
                 {plan.features.map((feature) => (
@@ -133,15 +118,6 @@ export function Pricing() {
             </motion.div>
           ))}
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-muted"
-        >
-          {pricingNote}
-        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
