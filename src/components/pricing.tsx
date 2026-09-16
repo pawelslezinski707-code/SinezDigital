@@ -7,7 +7,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import {
   pricingPlans,
   maintenancePlans,
-  maintenanceNote,
   seoUpgrade,
 } from "@/lib/data";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
@@ -101,9 +100,6 @@ export function Pricing() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-xs leading-relaxed text-muted">
-            {maintenanceNote}
-          </p>
 
           <ul className="mt-8 divide-y divide-surface-border border-y border-surface-border">
             <li className="flex items-baseline justify-between py-4">

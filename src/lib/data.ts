@@ -226,9 +226,6 @@ export const maintenancePlans: MaintenancePlan[] = [
   { name: "Business Pro", price: "od 129 zł / mies." },
 ];
 
-export const maintenanceNote =
-  "To przykładowe stawki — dopasuj je do zakresu prac, jaki chcesz obejmować abonamentem (np. liczba zmian w miesiącu, czas reakcji).";
-
 export const seoUpgrade = {
   name: "Upgrade do SEO Pro",
   priceNote: "jednorazowo",
