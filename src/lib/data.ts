@@ -166,7 +166,6 @@ export type PricingPlan = {
   description: string;
   features: string[];
   notes?: string[];
-  featured?: boolean;
 };
 
 export const pricingPlans: PricingPlan[] = [
@@ -193,7 +192,6 @@ export const pricingPlans: PricingPlan[] = [
       "Wersja mobilna",
       "SEO Basic w cenie pakietu",
     ],
-    featured: true,
   },
   {
     name: "Business Pro",

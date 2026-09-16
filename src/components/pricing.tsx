@@ -33,72 +33,28 @@ export function Pricing() {
             <motion.div
               key={plan.name}
               variants={fadeInUp}
-              className={`relative flex flex-col rounded-3xl border p-8 ${
-                plan.featured
-                  ? "border-transparent bg-gradient-to-b from-violet-600 to-blue-600 text-white shadow-2xl shadow-violet-600/30 lg:-translate-y-4"
-                  : "border-surface-border bg-background"
-              }`}
+              className="relative flex flex-col rounded-3xl border border-surface-border bg-background p-8 transition-colors duration-300 hover:border-violet-500/60 dark:hover:border-violet-400/60"
             >
-              <h3
-                className={`text-lg font-semibold ${
-                  plan.featured ? "text-white" : "text-foreground"
-                }`}
-              >
-                {plan.name}
-              </h3>
-              <p
-                className={`mt-2 text-sm ${
-                  plan.featured ? "text-violet-100" : "text-muted"
-                }`}
-              >
-                {plan.description}
-              </p>
+              <h3 className="text-lg font-semibold text-foreground">{plan.name}</h3>
+              <p className="mt-2 text-sm text-muted">{plan.description}</p>
 
               <div className="mt-6 flex items-baseline gap-2">
-                {plan.priceFrom && (
-                  <span
-                    className={`text-sm ${
-                      plan.featured ? "text-violet-100" : "text-muted"
-                    }`}
-                  >
-                    od
-                  </span>
-                )}
-                <span
-                  className={`text-4xl font-bold ${
-                    plan.featured ? "text-white" : "text-foreground"
-                  }`}
-                >
-                  {plan.price}
-                </span>
+                {plan.priceFrom && <span className="text-sm text-muted">od</span>}
+                <span className="text-4xl font-bold text-foreground">{plan.price}</span>
               </div>
-              <p
-                className={`mt-1 text-xs ${
-                  plan.featured ? "text-violet-100" : "text-muted"
-                }`}
-              >
-                {plan.priceNote}
-              </p>
+              <p className="mt-1 text-xs text-muted">{plan.priceNote}</p>
 
-              <ul className="mt-8 flex-1 space-y-3 border-t border-white/10 pt-6">
+              <ul className="mt-8 flex-1 space-y-3 border-t border-surface-border pt-6">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm">
-                    <Check
-                      className={`mt-0.5 h-4 w-4 shrink-0 ${
-                        plan.featured ? "text-white" : "text-violet-600 dark:text-violet-400"
-                      }`}
-                    />
-                    <span className={plan.featured ? "text-white/90" : "text-foreground/80"}>
-                      {feature}
-                    </span>
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-violet-600 dark:text-violet-400" />
+                    <span className="text-foreground/80">{feature}</span>
                   </li>
                 ))}
                 {plan.notes?.map((note) => (
                   <li
                     key={note}
-                    className={`pl-7 text-xs italic ${
-                      plan.featured ? "text-violet-100" : "text-violet-600 dark:text-violet-400"
-                    }`}
+                    className="pl-7 text-xs italic text-violet-600 dark:text-violet-400"
                   >
                     {note}
                   </li>
@@ -107,11 +63,7 @@ export function Pricing() {
 
               <a
                 href="#kontakt"
-                className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-105 ${
-                  plan.featured
-                    ? "bg-white text-violet-700"
-                    : "bg-gradient-to-r from-violet-600 to-blue-600 text-white"
-                }`}
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
               >
                 Umów konsultację
               </a>
