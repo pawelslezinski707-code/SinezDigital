@@ -8,7 +8,7 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export function Process() {
   return (
-    <section className="bg-surface py-24 sm:py-32">
+    <section id="jak-pracujemy" className="bg-surface py-24 sm:py-32">
       <Container>
         <SectionHeading
           eyebrow="Jak pracujemy"
