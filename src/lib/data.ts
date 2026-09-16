@@ -132,6 +132,7 @@ export type ProcessStep = {
   number: string;
   title: string;
   description: string;
+  note?: string;
 };
 
 export const processSteps: ProcessStep[] = [
@@ -162,6 +163,7 @@ export const processSteps: ProcessStep[] = [
     title: "Wdrożenie i wsparcie",
     description:
       "Publikujemy stronę, konfigurujemy analitykę i zostajemy przy Tobie, oferując dalszą opiekę.",
+    note: "Płatna usługa w formie miesięcznego abonamentu, dostępna dla planów Business i Business Pro. Plan Portfolio jej nie obejmuje, bo nie wymaga dalszego wsparcia.",
   },
 ];
 

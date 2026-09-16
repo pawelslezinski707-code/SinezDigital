@@ -41,8 +41,26 @@ export function Process() {
                     {step.number}
                   </span>
                 </div>
-                <h3 className="mt-5 text-lg font-semibold text-foreground">
-                  {step.title}
+                <h3 className="mt-5 flex items-center justify-center gap-1 text-lg font-semibold text-foreground">
+                  <span>{step.title}</span>
+                  {step.note && (
+                    <span className="group/tooltip relative inline-flex">
+                      <button
+                        type="button"
+                        className="flex h-4 w-4 items-center justify-center rounded-full text-xs font-bold text-violet-500 outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-violet-400"
+                        aria-describedby={`step-note-${step.number}`}
+                      >
+                        *
+                      </button>
+                      <span
+                        id={`step-note-${step.number}`}
+                        role="tooltip"
+                        className="pointer-events-none absolute top-full right-0 z-20 mt-2 w-56 max-w-[70vw] rounded-lg border border-surface-border bg-background p-3 text-xs leading-relaxed font-normal text-muted opacity-0 shadow-xl transition-opacity duration-200 group-hover/tooltip:opacity-100 group-focus-within/tooltip:opacity-100"
+                      >
+                        {step.note}
+                      </span>
+                    </span>
+                  )}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   {step.description}
