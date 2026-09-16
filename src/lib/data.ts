@@ -131,16 +131,16 @@ export const processSteps: ProcessStep[] = [
   {
     icon: ClipboardList,
     number: "01",
-    title: "Brief i wycena",
+    title: "Konsultacja i wstępna wycena",
     description:
-      "Poznajemy Twoje cele biznesowe, oczekiwania i budżet, a następnie przygotowujemy szczegółową wycenę.",
+      "Podczas konsultacji poznajemy, jak ma wyglądać i działać Twoja strona — z uwzględnieniem tego, co chcesz dzięki niej osiągnąć. Ustalamy zakres projektu i przygotowujemy wstępną wycenę.",
   },
   {
     icon: PenTool,
     number: "02",
     title: "Projekt graficzny",
     description:
-      "Tworzymy makiety i projekt UI dopasowany do charakteru marki, uwzględniając Twoje uwagi.",
+      "Przesyłamy wstępny wygląd strony dopasowany do charakteru Twojej marki. Ty decydujesz, czy to wystarczy, czy przechodzimy do dalszej realizacji.",
   },
   {
     icon: Code2,

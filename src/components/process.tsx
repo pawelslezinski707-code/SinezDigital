@@ -51,6 +51,21 @@ export function Process() {
             );
           })}
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-14 flex justify-center"
+        >
+          <a
+            href="#kontakt"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-600/20 transition-transform hover:scale-105"
+          >
+            Umów bezpłatną konsultację
+          </a>
+        </motion.div>
       </Container>
     </section>
   );
