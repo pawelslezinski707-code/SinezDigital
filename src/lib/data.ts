@@ -13,9 +13,9 @@ import {
 import { InstagramIcon, TikTokIcon } from "@/components/social-icons";
 
 export const navLinks = [
-  { href: "#o-nas", label: "O nas" },
   { href: "#uslugi", label: "Usługi" },
   { href: "#portfolio", label: "Portfolio" },
+  { href: "#o-nas", label: "O nas" },
   { href: "#cennik", label: "Cennik" },
   { href: "#kontakt", label: "Kontakt" },
 ];
