@@ -33,7 +33,9 @@ export function Pricing() {
             <motion.div
               key={plan.name}
               variants={fadeInUp}
-              className="relative flex flex-col rounded-3xl border border-surface-border bg-background p-8 transition-colors duration-300 hover:border-violet-500/60 dark:hover:border-violet-400/60"
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative flex flex-col rounded-3xl border border-surface-border bg-background p-8 transition-[border-width,border-color,box-shadow] duration-300 hover:border-2 hover:border-violet-500/60 hover:shadow-xl hover:shadow-violet-600/10 dark:hover:border-violet-400/60"
             >
               <h3 className="text-lg font-semibold text-foreground">{plan.name}</h3>
               <p className="mt-2 text-sm text-muted">{plan.description}</p>
