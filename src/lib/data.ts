@@ -5,6 +5,7 @@ import {
   FileText,
   LifeBuoy,
   Search,
+  AppWindow,
   ClipboardList,
   PenTool,
   Code2,
@@ -15,6 +16,7 @@ import { InstagramIcon, TikTokIcon } from "@/components/social-icons";
 export const navLinks = [
   { href: "#uslugi", label: "Usługi" },
   { href: "#portfolio", label: "Portfolio" },
+  { href: "#aplikacje", label: "Aplikacje" },
   { href: "#jak-pracujemy", label: "Jak pracujemy" },
   { href: "#o-nas", label: "O nas" },
   { href: "#cennik", label: "Cennik" },
@@ -53,6 +55,12 @@ export const services: Service[] = [
       "Stałe wsparcie techniczne, aktualizacje i rozwój funkcjonalności już po uruchomieniu projektu.",
   },
   {
+    icon: AppWindow,
+    title: "Aplikacje internetowe",
+    description:
+      "Poza stronami tworzymy też aplikacje – z kontami użytkowników, panelem administratora i zapisem danych.",
+  },
+  {
     icon: Search,
     title: "SEO dla firm",
     description:
@@ -60,7 +68,7 @@ export const services: Service[] = [
   },
 ];
 
-export type ProjectCategory = "firmy" | "prywatne";
+export type ProjectCategory = "firmy" | "prywatne" | "aplikacje";
 
 export type Project = {
   id: string;
@@ -68,7 +76,8 @@ export type Project = {
   category: ProjectCategory;
   categoryLabel: string;
   image: string;
-  demoUrl: string;
+  demoUrl?: string;
+  liveUrl?: string;
   demo: boolean;
   description: string;
   highlights: string[];
@@ -124,6 +133,24 @@ export const projects: Project[] = [
       "Stale widoczny przycisk szybkiego kontaktu telefonicznego",
       "Odznaki zaufania: gwarancja, terminowość, ubezpieczenie OC",
       "Jasne wezwania do działania: bezpłatna wycena i oferta",
+    ],
+  },
+  {
+    id: "hablamos",
+    name: "Hablamos",
+    category: "aplikacje",
+    categoryLabel: "Aplikacja",
+    image: "/portfolio/hablamos.jpg",
+    liveUrl: "https://hablamons.vercel.app",
+    demo: false,
+    description:
+      "Hablamos to działająca aplikacja do nauki hiszpańskiego dla Polaków. Krótkie lekcje i testy, konta uczniów, rankingi klasy oraz panel administratora — z interfejsem w całości po polsku.",
+    highlights: [
+      "Krótka lekcja, a po niej test sprawdzający wiedzę z danego tematu",
+      "Konta uczniów i ranking klasy, a także tryb gościa bez zakładania konta",
+      "Seria dni i punkty XP motywujące do regularnej nauki",
+      "Panel administratora do zarządzania treściami",
+      "Możliwość zainstalowania aplikacji na telefonie",
     ],
   },
 ];

@@ -13,6 +13,7 @@ const filters: { value: ProjectCategory | "wszystkie"; label: string }[] = [
   { value: "wszystkie", label: "Wszystkie" },
   { value: "firmy", label: "Firmy" },
   { value: "prywatne", label: "Portfolio prywatne" },
+  { value: "aplikacje", label: "Aplikacje" },
 ];
 
 export function Portfolio() {
@@ -31,7 +32,7 @@ export function Portfolio() {
         <SectionHeading
           eyebrow="Portfolio"
           title="Realizacje, z których jesteśmy dumni"
-          description="Poniższe projekty to realizacje demonstracyjne — pokazują nasze możliwości i styl pracy. Nie są to strony rzeczywistych klientów, ale właśnie takie projekty możemy zrealizować dla Ciebie."
+          description="Projekty oznaczone jako „Demo” to realizacje demonstracyjne — pokazują nasze możliwości i styl pracy. Nie są to strony rzeczywistych klientów, ale właśnie takie projekty możemy zrealizować dla Ciebie."
         />
 
         <div
@@ -95,13 +96,25 @@ export function Portfolio() {
                   <h3 className="text-base font-semibold text-foreground">
                     {project.name}
                   </h3>
-                  <Link
-                    href={`/portfolio/${project.id}`}
-                    className="inline-flex items-center gap-1 text-sm font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400"
-                  >
-                    Zobacz więcej
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
+                  {project.demoUrl ? (
+                    <Link
+                      href={`/portfolio/${project.id}`}
+                      className="inline-flex items-center gap-1 text-sm font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400"
+                    >
+                      Zobacz więcej
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  ) : (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm font-medium text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400"
+                    >
+                      Otwórz aplikację
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  )}
                 </div>
               </motion.article>
             ))}

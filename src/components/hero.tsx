@@ -39,7 +39,7 @@ export function Hero() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1.5 text-sm font-medium text-violet-600 dark:text-violet-400"
           >
             <Sparkles className="h-4 w-4" />
-            Agencja projektowania stron internetowych
+            Agencja projektowania stron internetowych i aplikacji
           </motion.span>
 
           <motion.h1
@@ -54,8 +54,8 @@ export function Hero() {
             variants={fadeInUp}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-muted"
           >
-            Sinez Digital projektuje nowoczesne strony internetowe i portfolio dla
-            firm oraz osób prywatnych. Łączymy przemyślany design z wydajnym
+            Sinez Digital projektuje nowoczesne strony internetowe, portfolio i
+            aplikacje dla firm oraz osób prywatnych. Łączymy przemyślany design z wydajnym
             kodem, aby Twoja strona realnie pracowała na wyniki.
           </motion.p>
 

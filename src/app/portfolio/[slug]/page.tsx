@@ -9,7 +9,9 @@ import { DemoFrame } from "@/components/demo-frame";
 import { projects } from "@/lib/data";
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.id }));
+  return projects
+    .filter((project) => project.demoUrl)
+    .map((project) => ({ slug: project.id }));
 }
 
 type PageProps = {
@@ -17,7 +19,7 @@ type PageProps = {
 };
 
 function getProject(slug: string) {
-  return projects.find((project) => project.id === slug);
+  return projects.find((project) => project.id === slug && project.demoUrl);
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -38,7 +40,7 @@ export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
   const project = getProject(slug);
 
-  if (!project) {
+  if (!project || !project.demoUrl) {
     notFound();
   }
 
