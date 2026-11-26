@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Instrument_Sans, Caveat } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const instrument = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600"],
   display: "swap",
 });
 
@@ -64,13 +58,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pl"
-      suppressHydrationWarning
-      className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${instrument.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

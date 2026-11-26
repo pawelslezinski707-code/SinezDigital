@@ -13,10 +13,10 @@ export function Footer() {
           <div>
             <Link
               href="/"
-              className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
+              className="flex items-center gap-2 text-base font-semibold text-foreground"
             >
               <Logo className="h-8 w-8" />
-              Sinez <span className="text-gradient">Digital</span>
+              Sinez Digital
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
               Tworzymy aplikacje i pomagamy zamieniać pomysły w prawdziwe
@@ -59,7 +59,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-surface-border text-muted transition-colors hover:border-violet-500/40 hover:text-violet-600 dark:hover:text-violet-400"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border text-muted transition-colors hover:border-foreground hover:text-foreground"
                   >
                     <Icon className="h-4 w-4" />
                   </a>

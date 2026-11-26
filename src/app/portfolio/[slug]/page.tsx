@@ -58,17 +58,17 @@ export default async function ProjectPage({ params }: PageProps) {
           </Link>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1 text-sm font-medium text-violet-600 dark:text-violet-400">
+            <span className="rounded-full border border-surface-border bg-card px-4 py-1 text-sm text-muted">
               {project.categoryLabel}
             </span>
             {project.demo && (
-              <span className="rounded-full bg-violet-600 px-4 py-1 text-sm font-semibold text-white">
+              <span className="font-hand text-2xl text-accent">
                 Projekt demonstracyjny
               </span>
             )}
           </div>
 
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
             {project.name}
           </h1>
 
@@ -86,7 +86,7 @@ export default async function ProjectPage({ params }: PageProps) {
               <ul className="mt-6 space-y-4">
                 {project.highlights.map((highlight) => (
                   <li key={highlight} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-violet-600 dark:text-violet-400" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                     <span className="text-base leading-relaxed text-foreground/90">
                       {highlight}
                     </span>
@@ -95,7 +95,7 @@ export default async function ProjectPage({ params }: PageProps) {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-surface-border bg-surface p-6">
+            <div className="rounded-2xl border border-surface-border bg-card p-6">
               <h3 className="text-base font-semibold text-foreground">
                 Podoba Ci się ten styl?
               </h3>

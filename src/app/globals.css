@@ -1,32 +1,27 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  --background: #fbfaff;
-  --foreground: #12101c;
-  --surface: #f2effb;
-  --surface-border: #e2ddf2;
-  --muted: #5c5772;
-}
-
-.dark {
-  --background: #07060d;
-  --foreground: #f4f2fb;
-  --surface: #0e0c18;
-  --surface-border: #221e36;
-  --muted: #a29eb8;
+  --background: #fbf6ee;
+  --foreground: #2a231c;
+  --surface: #f4ece0;
+  --card: #fffdf9;
+  --surface-border: #e6dccd;
+  --muted: #6b6157;
+  --accent: #b5472f;
+  --accent-hover: #9a3b26;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
+  --color-card: var(--card);
   --color-surface-border: var(--surface-border);
   --color-muted: var(--muted);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-bricolage);
-  --font-mono: var(--font-jetbrains);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-sans: var(--font-instrument);
+  --font-hand: var(--font-caveat);
 }
 
 * {
@@ -40,63 +35,36 @@ body {
 }
 
 @layer base {
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-display);
-  }
-
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
   textarea:focus-visible {
-    outline: 2px solid #7c3aed;
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
-  }
-
-  .dark a:focus-visible,
-  .dark button:focus-visible,
-  .dark input:focus-visible,
-  .dark textarea:focus-visible {
-    outline-color: #a78bfa;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-600/25 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-violet-600/30;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-surface-border px-6 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-violet-500/60 hover:text-violet-600 dark:hover:text-violet-300;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-foreground;
   }
 
   .field {
-    @apply rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted/70 focus:border-violet-500 focus:ring-1 focus:ring-violet-500;
+    @apply rounded-lg border border-surface-border bg-card px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted/70 focus:border-foreground;
+  }
+
+  .link {
+    @apply underline decoration-foreground/30 underline-offset-4 transition-colors hover:decoration-accent;
   }
 }
 
 ::selection {
-  background: #7c3aed;
+  background: var(--accent);
   color: #ffffff;
-}
-
-.text-gradient {
-  background-image: linear-gradient(110deg, #6d28d9 0%, #7c3aed 50%, #4f46e5 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.dark .text-gradient {
-  background-image: linear-gradient(110deg, #c4b5fd 0%, #a78bfa 50%, #818cf8 100%);
-}
-
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(139, 92, 246, 0.09) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(139, 92, 246, 0.09) 1px, transparent 1px);
-  background-size: 56px 56px;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,7 +1,7 @@
 # Sinez Digital – strona firmowa
 
 Jednostronicowa strona firmy Sinez Digital (od 26.11.2026 główny profil: tworzenie aplikacji; strony internetowe jako dodatek) (właściciel: Paweł Śleziński). Treści wyłącznie po polsku.
-Stack: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind v4, framer-motion, lucide-react, next-themes (tryb jasny/ciemny).
+Stack: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind v4, framer-motion, lucide-react. Tylko jasny motyw (tryb ciemny usunięty 26.11.2026).
 
 ## Zasady pracy (najważniejsze)
 
@@ -25,7 +25,8 @@ Stack: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind v4, fr
 - **`navLinks` musi mieć tę samą kolejność co sekcje na stronie.** Linki w nagłówku i stopce są pisane jako `/#sekcja` (przez `next/link`), żeby działały też z podstron.
 - Strony demo to pliki statyczne w `public/demos/<slug>/`, osadzane iframe'em (`demo-frame.tsx`) na podstronie `/portfolio/[slug]`. Na stronie głównej są tylko dyskretne linki w sekcji `#strony` (`websites.tsx`), bez osobnej sekcji portfolio.
 - Polityka prywatności: `/polityka-prywatnosci`, link w stopce i pod formularzem. Przy dodaniu analityki, cookies, nowych usług zewnętrznych lub zmianie demo zaktualizuj ją.
-- Wygląd: domyślnie ciemny motyw (przełącznik nadal działa), czcionki Bricolage Grotesque (nagłówki), Inter (tekst), JetBrains Mono (etykiety). Wspólne klasy `btn-primary`, `btn-ghost`, `field` w `globals.css`.
+- Wygląd (styl „od szkicu do aplikacji”, wybrany przez użytkownika 26.11.2026): ciepłe papierowe tło `#fbf6ee`, tekst `#2a231c`, jeden akcent ceglany `#b5472f` (tokeny w `globals.css`). Czcionki: Instrument Sans (wszystko) + Caveat (`font-hand`) tylko do krótkich odręcznych dopisków. Wspólne klasy `btn-primary`, `btn-ghost`, `field`, `link`.
+- **Unikaj wyglądu „AI slop”** (użytkownik to wprost odrzucił): żadnych gradientów (tekst, tło, przyciski, ikony), świecących plam, siatek w tle, plakietek z kropką, pulsujących kropek, monospace'owych nagłówków sekcji, kafelków z gradientowymi ikonami ani mieszania wielu czcionek.
 - Nagłówki bezpieczeństwa w `next.config.ts` (`X-Frame-Options: SAMEORIGIN`, bo dema są w iframe na tej samej domenie). `/api/contact` działa tylko w trybie deweloperskim, na produkcji zwraca 404.
 
 ## Decyzje użytkownika
@@ -37,7 +38,7 @@ Stack: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind v4, fr
 
 ## Ikony i logo
 
-Logo użytkownika (gradient fioletowy, znak `</>`) jest w `src/components/logo.tsx`, `src/app/icon.svg`, `src/app/apple-icon.png` i `src/app/favicon.ico`. Przy zmianie logo trzeba odnowić **wszystkie trzy pliki**. `favicon.ico` kiedyś został domyślnym trójkątem Vercela i wprowadzał w błąd. Rastry renderuj jako pełny kwadrat bez przezroczystych rogów (headless Chrome domyślnie daje biały róg).
+Logo użytkownika (jednolity fiolet `#6D51EE`, znak `</>` w Courier New; gradient usunięty 26.11.2026 na życzenie, bez innych zmian) jest w `src/components/logo.tsx`, `src/app/icon.svg`, `src/app/apple-icon.png` i `src/app/favicon.ico`. Przy zmianie logo trzeba odnowić **wszystkie trzy pliki**. `favicon.ico` kiedyś został domyślnym trójkątem Vercela i wprowadzał w błąd. Rastry renderuj jako pełny kwadrat bez przezroczystych rogów (headless Chrome domyślnie daje biały róg).
 
 ## Znane niedociągnięcia
 

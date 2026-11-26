@@ -8,55 +8,49 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export function Process() {
   return (
-    <section id="jak-pracujemy" className="bg-surface py-24 sm:py-32">
-      <Container className="grid gap-14 lg:grid-cols-12">
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-32">
-            <SectionHeading
-              eyebrow="Jak pracujemy"
-              title="Cztery kroki od pomysłu do startu"
-              description="Przez cały czas wiesz, na jakim etapie jest Twój projekt."
-            />
-            <motion.a
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              href="#kontakt"
-              className="btn-primary mt-10"
-            >
-              Opowiedz o swoim pomyśle
-            </motion.a>
-          </div>
-        </div>
+    <section id="jak-pracujemy" className="py-24 sm:py-28">
+      <Container>
+        <SectionHeading
+          note="jak pracujemy"
+          title="Cztery kroki od pomysłu do startu"
+          description="Przez cały czas wiesz, na jakim etapie jest Twój projekt."
+        />
 
         <motion.ol
-          variants={staggerContainer(0.12)}
+          variants={staggerContainer(0.1)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="lg:col-span-7"
+          className="relative mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8"
         >
-          {processSteps.map((step) => (
-            <motion.li
-              key={step.number}
-              variants={fadeInUp}
-              className="grid grid-cols-[auto_1fr] gap-6 border-t border-surface-border py-8 first:border-t-0 first:pt-0 sm:gap-10"
-            >
-              <span className="text-gradient font-mono text-4xl font-semibold sm:text-5xl">
-                {step.number}
+          {processSteps.map((step, index) => (
+            <motion.li key={step.number} variants={fadeInUp} className="relative">
+              {index < processSteps.length - 1 && (
+                <span
+                  aria-hidden
+                  className="absolute top-6 left-16 -right-6 hidden border-t-2 border-dashed border-muted/40 lg:block"
+                />
+              )}
+              <span className="relative flex h-12 w-12 items-center justify-center rounded-full border-2 border-foreground bg-background font-hand text-2xl text-foreground">
+                {Number(step.number)}
               </span>
-              <div>
-                <h3 className="text-xl font-semibold text-foreground sm:text-2xl">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-base leading-relaxed text-muted">
-                  {step.description}
-                </p>
-              </div>
+              <h3 className="mt-5 text-lg font-semibold text-foreground">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{step.description}</p>
             </motion.li>
           ))}
         </motion.ol>
+
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mt-14"
+        >
+          <a href="#kontakt" className="btn-primary">
+            Opowiedz o swoim pomyśle
+          </a>
+        </motion.div>
       </Container>
     </section>
   );

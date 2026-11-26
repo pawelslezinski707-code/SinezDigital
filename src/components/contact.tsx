@@ -45,11 +45,11 @@ export function Contact() {
   };
 
   return (
-    <section id="kontakt" className="border-t border-surface-border py-24 sm:py-32">
+    <section id="kontakt" className="bg-surface py-24 sm:py-28">
       <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <SectionHeading
-            eyebrow="Kontakt"
+            note="kontakt"
             title="Opowiedz nam o swoim pomyśle"
             description="Wypełnij formularz lub zadzwoń — odpowiadamy w ciągu 24 godzin."
           />
@@ -63,9 +63,9 @@ export function Contact() {
           >
             <a
               href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-              className="flex w-fit items-center gap-3 text-lg font-medium text-foreground transition-colors hover:text-violet-600 dark:hover:text-violet-400"
+              className="flex w-fit items-center gap-3 text-lg font-medium text-foreground transition-colors hover:text-accent"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border bg-card text-accent">
                 <Phone className="h-5 w-5" />
               </span>
               {contactInfo.phone}
@@ -81,7 +81,7 @@ export function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-surface-border text-muted transition-colors hover:border-violet-500/40 hover:text-violet-600 dark:hover:text-violet-400"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border bg-card text-muted transition-colors hover:border-foreground hover:text-accent"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
@@ -97,7 +97,7 @@ export function Contact() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 rounded-3xl border border-surface-border bg-surface p-6 sm:p-8 lg:col-span-7"
+          className="flex flex-col gap-5 rounded-2xl border border-surface-border bg-card p-6 sm:p-8 lg:col-span-7"
         >
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <div className="flex flex-col gap-2">
@@ -166,7 +166,7 @@ export function Contact() {
             odpowiedzieć na wiadomość. Szczegóły znajdziesz w{" "}
             <Link
               href="/polityka-prywatnosci"
-              className="text-violet-600 underline underline-offset-2 dark:text-violet-400"
+              className="link text-foreground"
             >
               polityce prywatności
             </Link>
@@ -176,7 +176,7 @@ export function Contact() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
+            className="btn-primary self-start disabled:cursor-not-allowed disabled:opacity-60"
           >
             <Send className="h-4 w-4" />
             {status === "loading" ? "Wysyłanie..." : "Wyślij wiadomość"}
@@ -184,13 +184,13 @@ export function Contact() {
 
           <div role="status" aria-live="polite">
             {status === "success" && (
-              <p className="flex items-center gap-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+              <p className="flex items-center gap-2 text-sm font-medium text-emerald-700">
                 <CheckCircle2 className="h-4 w-4" />
                 Dziękujemy! Odezwiemy się najszybciej, jak to możliwe.
               </p>
             )}
             {status === "error" && (
-              <p className="flex items-center gap-2 text-sm font-medium text-red-700 dark:text-red-400">
+              <p className="flex items-center gap-2 text-sm font-medium text-red-700">
                 <AlertCircle className="h-4 w-4" />
                 Coś poszło nie tak. Spróbuj ponownie lub zadzwoń bezpośrednio.
               </p>

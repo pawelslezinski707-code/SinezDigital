@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Polityka prywatności
           </h1>
-          <p className="mt-4 font-mono text-xs text-muted">
+          <p className="mt-4 text-sm text-muted">
             Ostatnia aktualizacja: 26 listopada 2026
           </p>
 
@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
                 danych osobowych możesz skontaktować się z nami telefonicznie:{" "}
                 <a
                   href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                  className="text-violet-600 underline underline-offset-2 dark:text-violet-400"
+                  className="link text-foreground"
                 >
                   {contactInfo.phone}
                 </a>
@@ -125,10 +125,8 @@ export default function PrivacyPolicyPage() {
                 śledzenia odwiedzających.
               </p>
               <p>
-                Jedyną informacją zapisywaną w Twojej przeglądarce jest wybrany
-                motyw (jasny lub ciemny). Jest przechowywany lokalnie w pamięci
-                przeglądarki (localStorage), nie jest nigdzie wysyłany i możesz go
-                usunąć, czyszcząc dane strony w ustawieniach przeglądarki.
+                Strona nie zapisuje też żadnych informacji w pamięci Twojej
+                przeglądarki.
               </p>
             </Section>
 

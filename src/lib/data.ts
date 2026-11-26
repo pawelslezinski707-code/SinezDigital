@@ -1,5 +1,3 @@
-import type { LucideIcon } from "lucide-react";
-import { AppWindow, Lightbulb, Palette, Globe } from "lucide-react";
 import { InstagramIcon, TikTokIcon } from "@/components/social-icons";
 
 export const navLinks = [
@@ -12,32 +10,27 @@ export const navLinks = [
 ];
 
 export type Service = {
-  icon: LucideIcon;
   title: string;
   description: string;
 };
 
 export const services: Service[] = [
   {
-    icon: AppWindow,
     title: "Aplikacje internetowe",
     description:
       "Tworzymy aplikacje od pomysłu do działającego produktu — z kontami użytkowników, panelem administratora i zapisem danych.",
   },
   {
-    icon: Lightbulb,
     title: "Pomoc z pomysłem",
     description:
       "Masz pomysł, ale nie wiesz, od czego zacząć? Pomożemy zamienić go w prawdziwą rzecz.",
   },
   {
-    icon: Palette,
     title: "Kolory, projekt i styl",
     description:
       "Pomożemy wybrać kolory, wygląd i styl, żeby całość pasowała do Twojego pomysłu.",
   },
   {
-    icon: Globe,
     title: "Strony internetowe",
     description:
       "Jeśli potrzebujesz strony zamiast aplikacji — też ją dla Ciebie zrobimy.",

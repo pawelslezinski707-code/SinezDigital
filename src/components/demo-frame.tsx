@@ -92,7 +92,7 @@ export function DemoFrame({ src, title }: { src: string; title: string }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Otwórz demo w nowej karcie"
-          className="flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-muted transition-colors hover:text-violet-600 dark:hover:text-violet-400"
+          className="flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-muted transition-colors hover:text-accent"
         >
           <ExternalLink className="h-3.5 w-3.5" />
           <span className="hidden sm:inline">Pełny ekran</span>
