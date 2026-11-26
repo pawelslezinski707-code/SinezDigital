@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://sinezdigital.pl/sitemap.xml",
+    sitemap: "https://www.sinezdigital.com/sitemap.xml",
   };
 }

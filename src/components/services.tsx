@@ -6,14 +6,17 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { services } from "@/lib/data";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
+// Układ „bento”: szerokie karty na zmianę z wąskimi.
+const spans = ["lg:col-span-2", "", "", "lg:col-span-2"];
+
 export function Services() {
   return (
     <section id="uslugi" className="py-24 sm:py-32">
       <Container>
         <SectionHeading
           eyebrow="Usługi"
-          title="Wszystko, czego potrzebujesz, by zaistnieć online"
-          description="Od prostej wizytówki po rozbudowaną stronę firmową – dopasowujemy rozwiązanie do Twoich celów i budżetu."
+          title="Od pomysłu do działającego produktu"
+          description="Zajmujemy się tworzeniem aplikacji, a przy okazji pomagamy we wszystkim, co jest potrzebne po drodze."
         />
 
         <motion.div
@@ -21,29 +24,32 @@ export function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {services.map((service) => {
+          {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.title}
                 variants={fadeInUp}
-                className="group relative overflow-hidden rounded-2xl border border-surface-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/40 hover:shadow-xl hover:shadow-violet-600/10"
+                className={`group relative flex min-h-56 flex-col justify-between overflow-hidden rounded-3xl border border-surface-border bg-surface p-7 transition-colors duration-300 hover:border-violet-500/50 ${spans[index] ?? ""}`}
               >
-                <div
-                  aria-hidden
-                  className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-violet-600/0 to-blue-500/0 transition-colors duration-300 group-hover:from-violet-600/10 group-hover:to-blue-500/10"
-                />
-                <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-blue-600 text-white shadow-lg shadow-violet-600/20">
-                  <Icon className="h-6 w-6" aria-hidden />
+                <div className="flex items-start justify-between">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-lg shadow-violet-600/20">
+                    <Icon className="h-6 w-6" aria-hidden />
+                  </span>
+                  <span className="font-mono text-xs text-muted">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <h3 className="relative mt-5 text-lg font-semibold text-foreground">
-                  {service.title}
-                </h3>
-                <p className="relative mt-2 text-sm leading-relaxed text-muted">
-                  {service.description}
-                </p>
+                <div className="mt-10">
+                  <h3 className="text-xl font-semibold text-foreground sm:text-2xl">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-muted sm:text-base">
+                    {service.description}
+                  </p>
+                </div>
               </motion.div>
             );
           })}

@@ -50,11 +50,11 @@ export default async function ProjectPage({ params }: PageProps) {
       <main className="flex-1 pt-32 pb-24 sm:pt-40 sm:pb-32">
         <Container>
           <Link
-            href="/#portfolio"
+            href="/#strony"
             className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
-            Wróć do portfolio
+            Wróć na stronę główną
           </Link>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -100,24 +100,24 @@ export default async function ProjectPage({ params }: PageProps) {
                 Podoba Ci się ten styl?
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                Możemy zrealizować podobny projekt dla Ciebie — dopasowany do
-                Twojej marki i celów biznesowych.
+                Możemy zrobić podobną stronę dla Ciebie — pomożemy też wybrać
+                kolory i styl.
               </p>
               <Link
                 href="/#kontakt"
-                className="mt-5 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-600/20 transition-transform hover:scale-105"
+                className="btn-primary mt-5"
               >
-                Wyceń podobny projekt
+                Zapytaj o podobną stronę
               </Link>
             </div>
           </div>
 
           <Link
-            href="/#portfolio"
+            href="/#strony"
             className="mt-16 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
-            Wróć do wszystkich realizacji
+            Wróć na stronę główną
           </Link>
         </Container>
       </main>

@@ -13,24 +13,23 @@ export function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="mx-auto max-w-2xl text-center"
+          className="max-w-4xl"
         >
-          <span className="inline-block rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1 text-sm font-medium text-violet-600 dark:text-violet-400">
+          <span className="flex items-center gap-3 font-mono text-xs font-medium tracking-widest text-violet-600 uppercase dark:text-violet-400">
+            <span aria-hidden className="h-px w-8 bg-violet-500/60" />
             O nas
           </span>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Projektujemy z myślą o realnych rezultatach
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-            Wierzymy, że dobra strona internetowa to nie tylko estetyka, ale przede
-            wszystkim narzędzie do osiągania celów biznesowych. Łączymy nowoczesny
-            design z solidnym kodem, aby każda realizacja była szybka, responsywna
-            i przyjazna dla użytkownika.
+          <p className="mt-6 font-display text-3xl leading-tight font-semibold tracking-tight text-foreground sm:text-5xl">
+            Współpracujemy z każdym, kto ma pomysł.{" "}
+            <span className="text-gradient">
+              Chętnie pomożemy zamienić go w prawdziwą rzecz.
+            </span>
           </p>
-          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-            Pracujemy zarówno z firmami, jak i osobami prywatnymi, dbając o to, żeby
-            każda strona była dopasowana do indywidualnych potrzeb i wygodna w
-            obsłudze na każdym urządzeniu.
+          <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            Nie musisz mieć gotowego projektu ani wiedzieć, jak ma wyglądać.
+            Razem wybierzemy kolory, projekt i styl, a potem zbudujemy z tego
+            działający produkt — niezależnie od tego, czy jesteś firmą, czy osobą
+            prywatną.
           </p>
         </motion.div>
       </Container>

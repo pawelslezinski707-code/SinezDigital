@@ -64,9 +64,9 @@ export function Header() {
             <ThemeToggle />
             <Link
               href="/#kontakt"
-              className="rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-600/20 transition-transform hover:scale-105"
+              className="btn-primary px-5 py-2.5"
             >
-              Wyceń projekt
+              Napisz do nas
             </Link>
           </div>
 
@@ -108,9 +108,9 @@ export function Header() {
               <Link
                 href="/#kontakt"
                 onClick={() => setIsOpen(false)}
-                className="mt-2 rounded-full bg-gradient-to-r from-violet-600 to-blue-600 px-5 py-3 text-center text-sm font-semibold text-white"
+                className="btn-primary mt-2"
               >
-                Wyceń projekt
+                Napisz do nas
               </Link>
             </Container>
           </motion.div>

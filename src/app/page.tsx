@@ -1,11 +1,10 @@
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
-import { Portfolio } from "@/components/portfolio";
 import { Apps } from "@/components/apps";
 import { Process } from "@/components/process";
 import { About } from "@/components/about";
-import { Pricing } from "@/components/pricing";
+import { Websites } from "@/components/websites";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 
@@ -16,11 +15,10 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Services />
-        <Portfolio />
         <Apps />
         <Process />
         <About />
-        <Pricing />
+        <Websites />
         <Contact />
       </main>
       <Footer />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -9,29 +9,34 @@ const inter = Inter({
   display: "swap",
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
-const siteUrl = "https://sinezdigital.pl";
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const siteUrl = "https://www.sinezdigital.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Sinez Digital – Projektowanie stron internetowych i portfolio",
+    default: "Sinez Digital – Zamieniamy pomysły w aplikacje",
     template: "%s | Sinez Digital",
   },
   description:
-    "Sinez Digital to agencja projektowania nowoczesnych stron internetowych i portfolio dla firm oraz osób prywatnych. Strony firmowe i wizytówki.",
+    "Sinez Digital tworzy aplikacje internetowe. Współpracujemy z każdym, kto ma pomysł — pomagamy go dopracować, wybrać kolory i styl oraz zbudować. Robimy też strony internetowe.",
   keywords: [
-    "projektowanie stron internetowych",
+    "tworzenie aplikacji",
+    "aplikacje internetowe",
+    "aplikacja na zamówienie",
     "tworzenie stron www",
-    "agencja interaktywna",
-    "portfolio online",
-    "strony wizytówki",
+    "projektowanie stron internetowych",
   ],
   authors: [{ name: "Sinez Digital" }],
   openGraph: {
@@ -39,15 +44,15 @@ export const metadata: Metadata = {
     locale: "pl_PL",
     url: siteUrl,
     siteName: "Sinez Digital",
-    title: "Sinez Digital – Tworzymy strony, które sprzedają",
+    title: "Sinez Digital – Zamieniamy pomysły w aplikacje",
     description:
-      "Nowoczesne strony internetowe i portfolio dla firm oraz osób prywatnych. Design i kod w jednym miejscu.",
+      "Masz pomysł? Pomożemy zamienić go w prawdziwą aplikację — od koloru i stylu po działający produkt.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sinez Digital – Tworzymy strony, które sprzedają",
+    title: "Sinez Digital – Zamieniamy pomysły w aplikacje",
     description:
-      "Nowoczesne strony internetowe i portfolio dla firm oraz osób prywatnych.",
+      "Masz pomysł? Pomożemy zamienić go w prawdziwą aplikację — od koloru i stylu po działający produkt.",
   },
   robots: {
     index: true,
@@ -60,10 +65,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="pl"
       suppressHydrationWarning
-      className={`${inter.variable} ${poppins.variable} h-full antialiased`}
+      className={`${inter.variable} ${bricolage.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
         </ThemeProvider>
       </body>

@@ -1,6 +1,6 @@
 # Sinez Digital – strona firmowa
 
-Jednostronicowa strona marketingowa agencji Sinez Digital (właściciel: Paweł Śleziński). Treści wyłącznie po polsku.
+Jednostronicowa strona firmy Sinez Digital (od 26.11.2026 główny profil: tworzenie aplikacji; strony internetowe jako dodatek) (właściciel: Paweł Śleziński). Treści wyłącznie po polsku.
 Stack: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind v4, framer-motion, lucide-react, next-themes (tryb jasny/ciemny).
 
 ## Zasady pracy (najważniejsze)
@@ -20,19 +20,20 @@ Stack: Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind v4, fr
 
 ## Struktura
 
-- Treści są w `src/lib/data.ts`: `navLinks`, `services`, `projects`, `processSteps`, `pricingPlans`, `maintenancePlans`, `seoUpgrade`, `socialLinks`, `contactInfo`.
-- Kolejność sekcji w `src/app/page.tsx`: Hero → Usługi `#uslugi` → Portfolio `#portfolio` → Aplikacje `#aplikacje` → Jak pracujemy `#jak-pracujemy` → O nas `#o-nas` → Cennik `#cennik` → Kontakt `#kontakt`.
-- **`navLinks` musi mieć tę samą kolejność co sekcje na stronie.** Linki w nagłówku i stopce są pisane jako `/#sekcja` (przez `next/link`), żeby działały też z podstron `/portfolio/[slug]`.
-- Strony demo w portfolio to prawdziwe pliki statyczne w `public/demos/<slug>/`, osadzane iframe'em (`demo-frame.tsx`, zawiera ochronę przed przewijaniem strony nadrzędnej po kliknięciu w iframe) na podstronie `/portfolio/[slug]`.
-- Aplikacje (np. Hablamos) mają `liveUrl` i `category: "aplikacje"`, nie mają podstrony ani plakietki „Demo”, bo to działające produkty. Karta prowadzi na żywy adres.
+- Treści są w `src/lib/data.ts`: `navLinks`, `services`, `projects`, `processSteps`, `socialLinks`, `contactInfo`.
+- Kolejność sekcji w `src/app/page.tsx`: Hero → Usługi `#uslugi` → Aplikacje `#aplikacje` → Jak pracujemy `#jak-pracujemy` → O nas `#o-nas` → Strony `#strony` → Kontakt `#kontakt`.
+- **`navLinks` musi mieć tę samą kolejność co sekcje na stronie.** Linki w nagłówku i stopce są pisane jako `/#sekcja` (przez `next/link`), żeby działały też z podstron.
+- Strony demo to pliki statyczne w `public/demos/<slug>/`, osadzane iframe'em (`demo-frame.tsx`) na podstronie `/portfolio/[slug]`. Na stronie głównej są tylko dyskretne linki w sekcji `#strony` (`websites.tsx`), bez osobnej sekcji portfolio.
+- Polityka prywatności: `/polityka-prywatnosci`, link w stopce i pod formularzem. Przy dodaniu analityki, cookies, nowych usług zewnętrznych lub zmianie demo zaktualizuj ją.
+- Wygląd: domyślnie ciemny motyw (przełącznik nadal działa), czcionki Bricolage Grotesque (nagłówki), Inter (tekst), JetBrains Mono (etykiety). Wspólne klasy `btn-primary`, `btn-ghost`, `field` w `globals.css`.
+- Nagłówki bezpieczeństwa w `next.config.ts` (`X-Frame-Options: SAMEORIGIN`, bo dema są w iframe na tej samej domenie). `/api/contact` działa tylko w trybie deweloperskim, na produkcji zwraca 404.
 
 ## Decyzje użytkownika
 
-- Social media: tylko Instagram i TikTok (bez Facebooka, na razie). W `contactInfo` tylko telefon (e-mail i adres usunięte na życzenie).
-- Portfolio: Studio Yogi Lotus, Trattoria Bella Vita, RemontPro to demo (oznaczone „Demo”), Hablamos to działająca aplikacja.
-- Cennik: Portfolio 900 zł, Business 1 300 zł, Business Pro od 3 300 zł. Wszystkie karty wyglądają tak samo, bez plakietki „najczęściej wybierany”, bez czasu realizacji i bez dopisku pod cennikiem. Po najechaniu karta unosi się i ma grubszą fioletową ramkę.
-- Opieka po wdrożeniu to płatny abonament dla Business i Business Pro. Plan Portfolio jej nie obejmuje. Informacja jest tylko w dymku przy gwiazdce w kroku 04 „Jak pracujemy”, nie w treści kroku.
-- Usługi obejmują „SEO dla firm” i „Aplikacje internetowe”.
+- Firma zajmuje się teraz tworzeniem aplikacji; strony internetowe tylko jako „też możemy zrobić”. Przekaz: współpracujemy z każdym, kto ma pomysł, pomagamy zamienić go w prawdziwą rzecz i wybrać kolory, projekt, styl.
+- Cennik, abonamenty opieki i upgrade SEO usunięte (26.11.2026).
+- Hablamos pokazywany jako aplikacja „W trakcie tworzenia”.
+- Nazwa i logo bez zmian. Dane kontaktowe bez zmian: tylko telefon, Instagram i TikTok (bez Facebooka, e-maila i adresu).
 
 ## Ikony i logo
 
@@ -40,6 +41,6 @@ Logo użytkownika (gradient fioletowy, znak `</>`) jest w `src/components/logo.t
 
 ## Znane niedociągnięcia
 
-- `src/app/layout.tsx`, `robots.ts` i `sitemap.ts` wskazują `https://sinezdigital.pl`, a domena produkcyjna to `www.sinezdigital.com`.
-- Tytuł i opis w metadanych (`layout.tsx`) wspominają tylko o stronach, nie o aplikacjach.
+- Polityka prywatności podaje jako administratora tylko „Sinez Digital” i telefon; brak pełnych danych (imię i nazwisko / firma, adres, NIP), czekamy na decyzję użytkownika.
+- `npm audit`: Next.js 16.3.5 ma krytyczne podatności dotyczące `use cache` (strona tego nie używa), sharp i source-map-js mają poprawki dostępne przez `npm audit fix`.
 - Nie ma sekcji z opiniami klientów (nie dodawać bez prawdziwych opinii od użytkownika).

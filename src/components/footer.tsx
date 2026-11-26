@@ -19,8 +19,8 @@ export function Footer() {
               Sinez <span className="text-gradient">Digital</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-              Projektujemy nowoczesne strony internetowe i portfolio, które
-              pomagają firmom i osobom prywatnym skutecznie działać online.
+              Tworzymy aplikacje i pomagamy zamieniać pomysły w prawdziwe
+              rzeczy. Robimy też strony internetowe.
             </p>
           </div>
 
@@ -59,7 +59,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border text-muted transition-colors hover:border-violet-500/40 hover:text-violet-600 dark:hover:text-violet-400"
+                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-surface-border text-muted transition-colors hover:border-violet-500/40 hover:text-violet-600 dark:hover:text-violet-400"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
@@ -73,7 +73,12 @@ export function Footer() {
           <p className="text-xs text-muted">
             © {year} Sinez Digital. Wszelkie prawa zastrzeżone.
           </p>
-          <p className="text-xs text-muted">Zaprojektowane i zbudowane z pasją.</p>
+          <Link
+            href="/polityka-prywatnosci"
+            className="text-xs text-muted transition-colors hover:text-foreground"
+          >
+            Polityka prywatności
+          </Link>
         </div>
       </Container>
     </footer>

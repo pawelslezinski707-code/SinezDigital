@@ -1,25 +1,13 @@
 import type { LucideIcon } from "lucide-react";
-import {
-  Building2,
-  Palette,
-  FileText,
-  LifeBuoy,
-  Search,
-  AppWindow,
-  ClipboardList,
-  PenTool,
-  Code2,
-  Rocket,
-} from "lucide-react";
+import { AppWindow, Lightbulb, Palette, Globe } from "lucide-react";
 import { InstagramIcon, TikTokIcon } from "@/components/social-icons";
 
 export const navLinks = [
   { href: "#uslugi", label: "Usługi" },
-  { href: "#portfolio", label: "Portfolio" },
   { href: "#aplikacje", label: "Aplikacje" },
   { href: "#jak-pracujemy", label: "Jak pracujemy" },
   { href: "#o-nas", label: "O nas" },
-  { href: "#cennik", label: "Cennik" },
+  { href: "#strony", label: "Strony" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
@@ -31,40 +19,28 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    icon: Building2,
-    title: "Strony internetowe dla firm",
-    description:
-      "Profesjonalne serwisy firmowe, które budują wiarygodność marki i wspierają pozyskiwanie klientów.",
-  },
-  {
-    icon: Palette,
-    title: "Portfolio dla freelancerów i artystów",
-    description:
-      "Estetyczne, minimalistyczne strony prezentujące realizacje – dopasowane do indywidualnego stylu.",
-  },
-  {
-    icon: FileText,
-    title: "Strony wizytówki / one-page",
-    description:
-      "Szybkie, skuteczne strony jednostronicowe idealne na start lub prostą prezentację oferty.",
-  },
-  {
-    icon: LifeBuoy,
-    title: "Opieka i rozwój strony po wdrożeniu",
-    description:
-      "Stałe wsparcie techniczne, aktualizacje i rozwój funkcjonalności już po uruchomieniu projektu.",
-  },
-  {
     icon: AppWindow,
     title: "Aplikacje internetowe",
     description:
-      "Poza stronami tworzymy też aplikacje – z kontami użytkowników, panelem administratora i zapisem danych.",
+      "Tworzymy aplikacje od pomysłu do działającego produktu — z kontami użytkowników, panelem administratora i zapisem danych.",
   },
   {
-    icon: Search,
-    title: "SEO dla firm",
+    icon: Lightbulb,
+    title: "Pomoc z pomysłem",
     description:
-      "Optymalizacja strony pod wyszukiwarki, aby klienci łatwiej znajdowali Twoją firmę w Google – w pakietach Business i Business Pro, lub jako dodatkowy upgrade.",
+      "Masz pomysł, ale nie wiesz, od czego zacząć? Pomożemy zamienić go w prawdziwą rzecz.",
+  },
+  {
+    icon: Palette,
+    title: "Kolory, projekt i styl",
+    description:
+      "Pomożemy wybrać kolory, wygląd i styl, żeby całość pasowała do Twojego pomysłu.",
+  },
+  {
+    icon: Globe,
+    title: "Strony internetowe",
+    description:
+      "Jeśli potrzebujesz strony zamiast aplikacji — też ją dla Ciebie zrobimy.",
   },
 ];
 
@@ -139,12 +115,12 @@ export const projects: Project[] = [
     id: "hablamos",
     name: "Hablamos",
     category: "aplikacje",
-    categoryLabel: "Aplikacja",
+    categoryLabel: "W trakcie tworzenia",
     image: "/portfolio/hablamos.jpg",
     liveUrl: "https://hablamons.vercel.app",
     demo: false,
     description:
-      "Hablamos to działająca aplikacja do nauki hiszpańskiego dla Polaków. Krótkie lekcje i testy, konta uczniów, rankingi klasy oraz panel administratora — z interfejsem w całości po polsku.",
+      "Hablamos to aplikacja do nauki hiszpańskiego dla Polaków, którą obecnie rozwijamy. Krótkie lekcje i testy, konta uczniów, rankingi klasy oraz panel administratora — z interfejsem w całości po polsku.",
     highlights: [
       "Krótka lekcja, a po niej test sprawdzający wiedzę z danego tematu",
       "Konta uczniów i ranking klasy, a także tryb gościa bez zakładania konta",
@@ -156,113 +132,37 @@ export const projects: Project[] = [
 ];
 
 export type ProcessStep = {
-  icon: LucideIcon;
   number: string;
   title: string;
   description: string;
-  note?: string;
 };
 
 export const processSteps: ProcessStep[] = [
   {
-    icon: ClipboardList,
     number: "01",
-    title: "Konsultacja i wstępna wycena",
+    title: "Opowiadasz o pomyśle",
     description:
-      "Podczas konsultacji poznajemy, jak ma wyglądać i działać Twoja strona — z uwzględnieniem tego, co chcesz dzięki niej osiągnąć. Ustalamy zakres projektu i przygotowujemy wstępną wycenę.",
+      "Przedstaw nam swój pomysł, nawet jeśli jest jeszcze w zarysie. Wspólnie ustalamy, co ma robić i dla kogo.",
   },
   {
-    icon: PenTool,
     number: "02",
-    title: "Projekt graficzny",
+    title: "Projekt i styl",
     description:
-      "Przesyłamy wstępny wygląd strony dopasowany do charakteru Twojej marki. Ty decydujesz, czy to wystarczy, czy przechodzimy do dalszej realizacji.",
+      "Pomagamy wybrać kolory, wygląd i styl. Przesyłamy wstępny projekt, a Ty decydujesz, czy przechodzimy do dalszej realizacji.",
   },
   {
-    icon: Code2,
     number: "03",
-    title: "Realizacja",
+    title: "Tworzenie",
     description:
-      "Kodujemy stronę zgodnie z projektem – z naciskiem na wydajność, responsywność i dostępność.",
+      "Budujemy całość zgodnie z projektem — z naciskiem na wydajność, responsywność i dostępność.",
   },
   {
-    icon: Rocket,
     number: "04",
-    title: "Wdrożenie i wsparcie",
+    title: "Uruchomienie",
     description:
-      "Publikujemy stronę, konfigurujemy analitykę i zostajemy przy Tobie, oferując dalszą opiekę.",
-    note: "Płatna usługa w formie miesięcznego abonamentu, dostępna dla planów Business i Business Pro. Plan Portfolio jej nie obejmuje, bo nie wymaga dalszego wsparcia.",
+      "Publikujemy projekt i zostajemy przy Tobie, oferując dalszą opiekę.",
   },
 ];
-
-export type PricingPlan = {
-  name: string;
-  price: string;
-  priceFrom?: boolean;
-  priceNote: string;
-  description: string;
-  features: string[];
-  notes?: string[];
-};
-
-export const pricingPlans: PricingPlan[] = [
-  {
-    name: "Portfolio",
-    price: "900 zł",
-    priceNote: "cena stała",
-    description: "Prosta strona z najważniejszymi informacjami i danymi kontaktowymi.",
-    features: [
-      "Jedna strona z podstawowymi informacjami",
-      "Dane kontaktowe i linki do social media",
-      "Wersja mobilna",
-      "Podstawowa optymalizacja pod wyszukiwarki",
-    ],
-  },
-  {
-    name: "Business",
-    price: "1 300 zł",
-    priceNote: "cena stała",
-    description: "Pełna oferta, realizacje i kontakt zebrane w jednym miejscu.",
-    features: [
-      "Rozbudowane sekcje: oferta, o firmie, realizacje, opinie",
-      "Formularz kontaktowy",
-      "Wersja mobilna",
-      "SEO Basic w cenie pakietu",
-    ],
-  },
-  {
-    name: "Business Pro",
-    price: "3 300 zł",
-    priceFrom: true,
-    priceNote: "cena od",
-    description: "Osobne podstrony na każdą część oferty — gdy masz więcej do pokazania.",
-    features: [
-      "Do 6 podstron w cenie bazowej",
-      "Panel do samodzielnej edycji treści",
-      "SEO Pro w cenie pakietu",
-      "Zawiera wszystko z pakietów Portfolio i Business",
-    ],
-    notes: ["+200 zł za każdą kolejną podstronę"],
-  },
-];
-
-export type MaintenancePlan = {
-  name: string;
-  price: string;
-};
-
-export const maintenancePlans: MaintenancePlan[] = [
-  { name: "Business", price: "79 zł / mies." },
-  { name: "Business Pro", price: "od 129 zł / mies." },
-];
-
-export const seoUpgrade = {
-  name: "Upgrade do SEO Pro",
-  priceNote: "jednorazowo",
-  price: "120 zł",
-  note:
-    "Upgrade do SEO Pro to jednorazowa usługa, którą można dokupić do pakietu Portfolio lub Business — w Business Pro jest już w cenie.",
-};
 
 export const socialLinks = [
   {
