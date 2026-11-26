@@ -72,7 +72,7 @@ export function Contact() {
                   type="text"
                   required
                   autoComplete="name"
-                  className="rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-violet-500"
+                  className="rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-violet-500 focus:ring-1 focus:ring-violet-500"
                   placeholder="Jan Kowalski"
                 />
               </div>
@@ -86,7 +86,7 @@ export function Contact() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-violet-500"
+                  className="rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-violet-500 focus:ring-1 focus:ring-violet-500"
                   placeholder="jan@firma.pl"
                 />
               </div>
@@ -100,7 +100,7 @@ export function Contact() {
                 id="subject"
                 name="subject"
                 type="text"
-                className="rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-violet-500"
+                className="rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-violet-500 focus:ring-1 focus:ring-violet-500"
                 placeholder="Wycena strony internetowej"
               />
             </div>
@@ -114,7 +114,7 @@ export function Contact() {
                 name="message"
                 required
                 rows={5}
-                className="resize-none rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-violet-500"
+                className="resize-none rounded-xl border border-surface-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-violet-500 focus:ring-1 focus:ring-violet-500"
                 placeholder="Opowiedz nam o swoim projekcie..."
               />
             </div>
@@ -128,18 +128,20 @@ export function Contact() {
               {status === "loading" ? "Wysyłanie..." : "Wyślij wiadomość"}
             </button>
 
-            {status === "success" && (
-              <p className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                <CheckCircle2 className="h-4 w-4" />
-                Dziękujemy! Odezwiemy się najszybciej, jak to możliwe.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="flex items-center gap-2 text-sm font-medium text-red-600 dark:text-red-400">
-                <AlertCircle className="h-4 w-4" />
-                Coś poszło nie tak. Spróbuj ponownie lub zadzwoń bezpośrednio.
-              </p>
-            )}
+            <div role="status" aria-live="polite">
+              {status === "success" && (
+                <p className="flex items-center gap-2 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+                  <CheckCircle2 className="h-4 w-4" />
+                  Dziękujemy! Odezwiemy się najszybciej, jak to możliwe.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="flex items-center gap-2 text-sm font-medium text-red-700 dark:text-red-400">
+                  <AlertCircle className="h-4 w-4" />
+                  Coś poszło nie tak. Spróbuj ponownie lub zadzwoń bezpośrednio.
+                </p>
+              )}
+            </div>
           </motion.form>
 
           <motion.div
@@ -170,7 +172,7 @@ export function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex h-9 w-9 items-center justify-center rounded-full border border-surface-border text-muted transition-colors hover:border-violet-500/40 hover:text-violet-600 dark:hover:text-violet-400"
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-surface-border text-muted transition-colors hover:border-violet-500/40 hover:text-violet-600 dark:hover:text-violet-400"
                     >
                       <Icon className="h-4 w-4" />
                     </a>

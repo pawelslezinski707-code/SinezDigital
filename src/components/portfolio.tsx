@@ -36,7 +36,7 @@ export function Portfolio() {
         />
 
         <div
-          role="tablist"
+          role="group"
           aria-label="Filtruj realizacje po kategorii"
           className="mt-10 flex flex-wrap justify-center gap-2"
         >
@@ -44,8 +44,7 @@ export function Portfolio() {
             <button
               key={filter.value}
               type="button"
-              role="tab"
-              aria-selected={activeFilter === filter.value}
+              aria-pressed={activeFilter === filter.value}
               onClick={() => setActiveFilter(filter.value)}
               className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${
                 activeFilter === filter.value

@@ -1,11 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export function Hero() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32">
       <div className="pointer-events-none absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black_40%,transparent_100%)]" />
@@ -16,13 +18,13 @@ export function Hero() {
       />
       <motion.div
         aria-hidden
-        animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.7, 0.5] }}
+        animate={reduceMotion ? undefined : { scale: [1, 1.08, 1], opacity: [0.5, 0.7, 0.5] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute top-20 right-[-6rem] h-72 w-72 rounded-full bg-blue-500/20 blur-3xl dark:bg-blue-500/25"
       />
       <motion.div
         aria-hidden
-        animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
+        animate={reduceMotion ? undefined : { scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className="pointer-events-none absolute bottom-0 left-[-6rem] h-72 w-72 rounded-full bg-violet-500/20 blur-3xl dark:bg-violet-500/25"
       />

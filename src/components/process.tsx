@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -7,6 +8,17 @@ import { processSteps } from "@/lib/data";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export function Process() {
+  const [openNote, setOpenNote] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!openNote) return;
+    const close = (event: PointerEvent) => {
+      if (!(event.target as Element).closest("[data-step-note]")) setOpenNote(null);
+    };
+    document.addEventListener("pointerdown", close);
+    return () => document.removeEventListener("pointerdown", close);
+  }, [openNote]);
+
   return (
     <section id="jak-pracujemy" className="bg-surface py-24 sm:py-32">
       <Container>
@@ -44,10 +56,18 @@ export function Process() {
                 <h3 className="mt-5 flex items-center justify-center gap-1 text-lg font-semibold text-foreground">
                   <span>{step.title}</span>
                   {step.note && (
-                    <span className="group/tooltip relative inline-flex">
+                    <span data-step-note className="group/tooltip relative inline-flex">
                       <button
                         type="button"
-                        className="flex h-5 w-5 items-center justify-center rounded-full text-sm font-bold text-violet-500 outline-none transition-colors hover:text-violet-400 focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-violet-400 dark:hover:text-violet-300"
+                        aria-label="Więcej informacji"
+                        aria-expanded={openNote === step.number}
+                        onClick={() =>
+                          setOpenNote((prev) => (prev === step.number ? null : step.number))
+                        }
+                        onKeyDown={(event) => {
+                          if (event.key === "Escape") setOpenNote(null);
+                        }}
+                        className="-my-1.5 flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-violet-500 outline-none transition-colors hover:text-violet-400 focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-violet-400 dark:hover:text-violet-300"
                         aria-describedby={`step-note-${step.number}`}
                       >
                         *
@@ -55,7 +75,9 @@ export function Process() {
                       <span
                         id={`step-note-${step.number}`}
                         role="tooltip"
-                        className="pointer-events-none absolute top-full right-0 z-20 mt-2 w-56 max-w-[70vw] rounded-lg border border-surface-border bg-background p-3 text-xs leading-relaxed font-normal text-muted opacity-0 shadow-xl transition-opacity duration-200 group-hover/tooltip:opacity-100 group-focus-within/tooltip:opacity-100"
+                        className={`pointer-events-none absolute top-full right-0 z-20 mt-2 w-56 max-w-[70vw] rounded-lg border border-surface-border bg-background p-3 text-xs leading-relaxed font-normal text-muted shadow-xl transition-opacity duration-200 group-hover/tooltip:opacity-100 ${
+                          openNote === step.number ? "opacity-100" : "opacity-0"
+                        }`}
                       >
                         {step.note}
                       </span>
