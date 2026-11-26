@@ -41,6 +41,5 @@ Logo użytkownika (gradient fioletowy, znak `</>`) jest w `src/components/logo.t
 
 ## Znane niedociągnięcia
 
-- Polityka prywatności podaje jako administratora tylko „Sinez Digital” i telefon; brak pełnych danych (imię i nazwisko / firma, adres, NIP), czekamy na decyzję użytkownika.
-- `npm audit`: Next.js 16.3.5 ma krytyczne podatności dotyczące `use cache` (strona tego nie używa), sharp i source-map-js mają poprawki dostępne przez `npm audit fix`.
+- Polityka prywatności: administrator to Paweł Śleziński (działalność niezarejestrowana, bez NIP), kontakt tylko telefoniczny. Po rejestracji firmy zaktualizuj dane w `/polityka-prywatnosci`.
 - Nie ma sekcji z opiniami klientów (nie dodawać bez prawdziwych opinii od użytkownika).
